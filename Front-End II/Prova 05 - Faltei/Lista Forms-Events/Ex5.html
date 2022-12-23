@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Produto</title>
+    <style>
+        .nomeVerde{
+            background-color: #ddffcc;
+        }
+    </style>
+</head>
+<body>
+    <form name="form">
+        <input type="text" name="nome">
+        <input type="number" name="valor">
+        <input type="button" id="inserir" value="INSERIR">
+        <input type="button" id="maior" value="BUSCAR O MAIOR">
+    </form>
+    <script>
+        function insereProduto(nome, valor) {
+            let div = document.createElement("div");
+            div.style.width = '200px';
+            div.style.height = '100px';
+            div.style.border = 'solid black';
+            div.style.backgroundColor = "yellow";
+            div.style.margin = '10px';
+            let pNome = document.createElement("p");
+            pNome.innerHTML = nome;
+            pNome.setAttribute("class","nomes");
+            div.appendChild(pNome);
+            let pValor = document.createElement("p");
+            pValor.innerHTML = valor;
+            pValor.setAttribute("class","valores");
+            div.appendChild(pValor);
+            document.body.appendChild(div);
+        }
+        
+        document.querySelector("#maior").addEventListener("click",buscaMaior);
+        function buscaMaior() {
+            let divs = document.getElementsByTagName("div");
+            let valoresElementos = document.getElementsByClassName("valores");
+            let nomesElementos = document.getElementsByClassName("nomes");
+            var maiorValor = 0, maiorNome, index;
+            for (let i = 0; i < divs.length; i++) {
+                if(maiorValor < valoresElementos[i].textContent){
+                    maiorValor = valoresElementos[i].textContent;
+                    maiorNome = nomesElementos[i].textContent;
+                    index = i;
+                }
+            }
+            valoresElementos[index].parentNode.setAttribute("class","nomeVerde");
+            valoresElementos[index].parentNode.style.backgroundColor = null;
+            return console.log(maiorNome);
+        }
+
+        document.querySelector("#inserir").addEventListener("click",function (event) {
+            if(document.form.nome.value == ""){
+                alert("O nome está em branco!");
+                event.preventDefault();
+            }else{
+                var nome = document.form.nome.value;
+            }
+
+            if (Number(document.form.valor.value) < 0) {
+                alert("O valor deve ser positivo");
+                event.preventDefault();
+            } else {
+                var valor = Number(document.form.valor.value);
+            }
+            if (nome && valor) {
+                insereProduto(nome,valor);
+            }
+        })
+    </script>
+</body>
+</html>

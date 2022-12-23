@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Exemplo 08</title>
+	</head>
+	<body>
+		<form id="myForm" action="#">
+			<p>Selecione um estado</p>
+			<select id="selecao">
+				<option></option>
+				<option>Internet Explorer</option>
+				<option>Google Chrome</option>
+			</select>
+			<p><input type="text" id="resposta"></p>
+		</form>
+		<script>
+			function responder(){
+				var navegador = document.getElementById("selecao");
+				var resposta = document.getElementById("resposta");
+				// Pegando o índice
+				indice = navegador.selectedIndex;
+				// Pegando o valor
+				valor = navegador[indice].value;
+				resposta.value = valor;
+			}
+			var navegador = document.getElementById("selecao");
+			navegador.addEventListener("change", responder);
+		</script>
+	</body>
+</html>

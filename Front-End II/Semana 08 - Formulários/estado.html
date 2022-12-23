@@ -1,0 +1,17 @@
+<form name='f'> 
+Estado:
+<select name="estado">
+<option value=""></option>
+<option value="RJ">Rio de Janeiro</option>
+<option value="SP">São Paulo</option>
+<option value="MG">Minas Gerais</option>
+</select>
+</form> 
+<script> 
+
+// Índice do elemento selecionado:
+indice= document.f.estado.selectedIndex
+
+// Valor do elemento selecionado:
+valor = document.f.estado.options[indice].value
+</script> 

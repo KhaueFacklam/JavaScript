@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<p>Arraste a barra</p>
+	<div style="background: orange; width: 60px; height: 20px">
+	</div>
+	<script>
+		var lastX; // armazena a última posição observada do mouse
+		var rect = document.querySelector("div");//seleciona o div
+		rect.addEventListener("mousedown", function(event) {//mouse pressionado no div
+			if (event.which == 1) {//se for o botão esquerdo
+				lastX = event.pageX;//atualiza a variavel lastX com a posição observada do mouse
+				addEventListener("mousemove", moved);//cria um evento de mover o retângulo
+				event.preventDefault(); // previne o comportamento default de seleção
+			} 
+	  });
+
+	 	function moved(event) {
+			var dist = event.pageX - lastX;//caso contrario a
+			var newWidth = Math.max(10, rect.offsetWidth + dist);
+			rect.style.width = newWidth + "px";
+			lastX = event.pageX;
+		}
+
+		rect.addEventListener("mouseup",function(event){
+			removeEventListener("mousemove",moved);
+		});
+
+		rect.addEventListener("mouseout",function(event){
+			console.log(event.relatedTarget);
+			removeEventListener("mousemove",moved);
+		});
+	</script>
+	</body>
+</html>

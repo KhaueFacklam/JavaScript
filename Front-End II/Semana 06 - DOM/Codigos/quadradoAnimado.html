@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Nodos HTML</title>
+  </head>
+  <body>
+    <div style="position: absolute; top: 100px; left: 300px">
+      <div id="quadrado" style="position: absolute; height: 100px; width: 100px; background-color: #ff0000">
+      </div>
+      <p id="ctrl"></p>
+    </div>
+    <script>
+      var quadrado = document.getElementById("quadrado");
+      var ctrl = document.getElementById("ctrl");
+      ctrl.innerHTML="Teste";
+      var angle = 0, lastTime = null;
+      function animate(time) {
+        if (lastTime !== null)
+          angle += (time - lastTime) * 0.001;
+        lastTime = time;
+        quadrado.style.top = (Math.sin(angle) * 40) + "px";
+        quadrado.style.left = (Math.cos(angle) * 200) + "px";
+        ctrl.innerHTML = time;
+        requestAnimationFrame(animate);
+      }
+      requestAnimationFrame(animate);
+    </script>  
+  </body>
+</html>

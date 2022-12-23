@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Exemplo 02</title>
+	</head>
+	<body>
+		<form id="myForm" action="#">
+			<input type="button" id="btn1" value="Preencher">
+			<input type="button" id="btn2" value="Limpar">
+			<input type="button" id="btn3" value="Selecionar tudo">
+			<p><textarea id="textArea1" rows=6 cols=55></textarea></p>
+		</form>
+		<script>
+			function preencher(){
+				tArea = document.getElementById("textArea1");
+				tArea.value = "Linha um.\nLinha dois.\nLinha três.";
+			}
+			function limpar(){
+				tArea = document.getElementById("textArea1");
+				tArea.value = "";
+			}
+			function selecionar(){
+				tArea = document.getElementById("textArea1");
+				tArea.select();
+			}
+			document.getElementById("btn1").addEventListener("click", preencher);
+			document.getElementById("btn2").addEventListener("click", limpar);
+			document.getElementById("btn3").addEventListener("click", selecionar);
+		</script>
+	</body>
+</html>

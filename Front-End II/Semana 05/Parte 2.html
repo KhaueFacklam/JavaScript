@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>ESTUDO PROVA</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        td {
+            width: 80px;
+            height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <table>
+        <thead>
+            <tr>
+                <td></td>
+                <td>Seno</td>
+                <td>Coseno</td>
+                <td>Tangente</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>0º</td>
+                <td class="seno">ssasa</td>
+                <td class="coseno">ssasa</td>
+                <td class="tangente">ssasa</td>
+            </tr>
+            <tr>
+                <td class="angulo">45º</td>
+                <td class="seno">ssasa</td>
+                <td class="coseno">ssasa</td>
+                <td class="tangente">ssasa</td>
+            </tr>
+            <tr>
+                <td>90º</td>
+                <td class="seno">ssasa</td>
+                <td class="coseno">ssasa</td>
+                <td class="tangente">ssasa</td>
+            </tr>
+            <tr>
+                <td>135º</td>
+                <td class="seno">ssasa</td>
+                <td class="coseno">ssasa</td>
+                <td class="tangente">ssasa</td>
+            </tr>
+            <tr>
+                <td>135º</td>
+                <td class="seno">ssasa</td>
+                <td class="coseno">ssasa</td>
+                <td class="tangente">ssasa</td>
+            </tr>
+            <tr>
+                <td>180º</td>
+                <td class="seno">ssasa</td>
+                <td class="coseno">ssasa</td>
+                <td class="tangente">ssasa</td>
+            </tr>
+            <tr>
+                <td>225º</td>
+                <td class="seno">ssasa</td>
+                <td class="coseno">ssasa</td>
+                <td class="tangente">ssasa</td>
+            </tr>
+            <tr>
+                <td>270º</td>
+                <td class="seno">ssasa</td>
+                <td class="coseno">ssasa</td>
+                <td class="tangente">ssasa</td>
+            </tr>
+            <tr>
+                <td>315º</td>
+                <td class="seno">ssasa</td>
+                <td class="coseno">ssasa</td>
+                <td class="tangente">ssasa</td>
+            </tr>
+            <tr>
+                <td>360º</td>
+                <td class="seno">ssasa</td>
+                <td class="coseno">ssasa</td>
+                <td class="tangente">ssasa</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <script>
+
+        /*  1 - Crie um programa que recebe o raio de uma circunferência e calcula sua
+        área e seu perímetro
+
+        var raio = prompt("Informe o raio")
+        var Pi = 3.14
+
+        calculaAreaPerimetro(raio, Pi)
+        function calculaAreaPerimetro(raio, Pi) {
+
+            var area = Pi * (raio * raio)
+            var perimetro = 2 * (Pi * raio)
+
+            alert(`Área: ${area}`)
+            alert(`Perimetro: ${perimetro}`)
+
+        }
+
+
+
+        /*2 - Crie um algoritmo que monta uma tabela com o resultado do seno, cosseno
+        e tangente dos ângulos compreendidos entre 0° e 360°, espaçados em 45°
+
+        var seno = document.querySelectorAll(".seno")
+        var coseno = document.querySelectorAll(".coseno")
+        var tangente = document.querySelectorAll(".tangente")
+        
+        grau = 0
+        for (let i = 0; i < 10; i++) {
+            seno[i].innerHTML = Math.sin(grau)
+            coseno[i].innerHTML = Math.cos(grau)
+            tangente[i].innerHTML = Math.tan(grau)
+            grau += 45
+        }
+
+        3 - Crie o programa aposte_no_dado, onde a pessoa digita um número entre 1
+        e 6 e o sistema, com o auxílio da função random, “sorteia” um número dentro
+        do conjunto [1,6] verificando se a pessoa apostou no número correto. Caso
+        o número apostado seja escolhido, o sistema apresenta uma frase dizendo
+        que a pessoa venceu. Caso contrário, diz qual o número sorteado,
+        informando que a pessoa perdeu a aposta.
+
+        var escolha = prompt("Informe um numero entre 1 e 6")
+
+        var n = Math.floor(6 * Math.random())
+
+        if (escolha == n) {
+            alert("Parabens, é seu dia de sorte hein!")
+        }
+        else {
+            alert("Se fudeu, hein!")
+        }
+
+
+        4 - Elabore um programa que solicita uma frase através de prompt e escreve o
+        último caractere digitado pelo usuário
+
+        var frase = prompt("Escreva um frase")
+        var conta = frase.length
+
+        var letra = frase.charAt(conta-1)
+        alert(`${letra}`)
+
+
+        5 - Elabore um programa que solicita um número indeterminado de nomes a
+        partir de prompt. Após, o programa deverá imprimir os nomes com a maior
+        e menor quantidade de caracteres e o número de caracteres de cada um
+
+        var nome1 = prompt("Escreva um nome")
+        var nome2 = prompt("Escreva outro nome")
+        var nome3 = prompt("Escreva outro nome")
+
+        var valor1 = nome1.length
+        var valor2 = nome2.length
+        var valor3 = nome3.length
+
+        if (valor1 > valor2 && valor1 > valor3 && valor2 > valor3) {
+            alert(`${nome1}, ${nome2}, ${nome3}`)
+        }
+        else if (valor1 > valor2 && valor1 > valor3 && valor2 < valor3) {
+            alert(`${nome1}, ${nome3}, ${nome2}`)
+        }
+        else if (valor1 < valor2 && valor1 > valor3 && valor2 < valor3) {
+            alert(`${nome2}, ${nome1}, ${nome3}`)
+        }
+        else if (valor1 > valor2 && valor1 > valor3 && valor2 > valor3) {
+            alert(`${nome3}, ${nome2}, ${nome1}`)
+        }
+
+
+        6 - Elabore um programa que solicita um número indeterminado de palavras por
+        prompt. Cada palavra informada deverá ser invertida e armazenada em um
+        vetor. Após, o programa deverá percorrer o vetor imprimindo as palavras
+        invertidas em uma tabela HTML
+
+        let teste = prompt("Escreva um nome")
+        let invertida = teste.split("").reverse().join("")
+        alert(`${invertida}`)
+
+        ou
+
+        var meuArray = [1, 2, 3, 'a']
+        alert(`${meuArray.reverse()}`)
+        alert(`${meuArray}`)    
+
+
+        7 - Crie um programa que solicita ao usuário uma palavra. A partir daí o
+        programa deve formatar a palavra de forma que a primeira letra seja uma
+        maiúscula e as letras restantes sejam minúsculas
+
+        let nome = prompt("Escreva um nome")
+        let formataMaiscula = nome[0].toUpperCase() + nome.substr(1);
+        alert(`${formataMaiscula}`)
+
+        8 - Elabore um programa que solicite uma frase e após uma palavra. O
+        programa deverá mostrar em um alert quantas ocorrências da palavra
+        existem na frase. DICA: o método indexOf, possibilita a utilização de dois parâmetros.
+        Pesquise sobre o uso do segundo parâmetro
+  
+        let frase = prompt("Escreva uma frase")
+        let palavra = prompt("Informe uma palavra da frase")
+
+        let encontrada = frase.indexOf(palavra)
+        alert(`${encontrada}`)
+
+
+
+        9 - Elabore um programa que solicite uma frase ao usuário. Após o programa
+        deverá solicitar duas palavras onde: a primeira palavra indica o texto a ser
+        substituído; a segunda palavra indica o texto que irá substituir todas as
+        ocorrências da primeira palavra. Após o programa deverá apresentar em um
+        alert, a frase com a substituição dos textos
+
+        var frase = "Escreva uma frase"
+        let palavra1 = prompt("Informe uma palavra da frase para ser subistituida")
+        let palavra2 = prompt("Informe uma palavra da frase subistituir")
+        var fraseFinal = frase.replace(palavra1, palavra2);
+
+        alert(`${fraseFinal}`)
+
+
+        10 - Crie um programa que recebe um número indeterminado de palavras. Após,
+        apresente essas palavras ordenadas de forma decrescente (Z->A)
+
+        toString(palavra1)
+        toString(palavra2)
+        
+        var array = {palavra, palavra2}
+        array.sort()
+
+        alert(array)
+
+        */
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

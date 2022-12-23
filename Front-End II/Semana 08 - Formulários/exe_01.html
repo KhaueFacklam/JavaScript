@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Exemplo 01</title>
+	</head>
+	<body>
+		<form id="myForm" action="#">
+			Digite um número entre 1 e 5:
+			<input type="text" id="numero">
+			<input type="submit" value="Enviar">
+		</form>
+		<script>
+			function valida(){
+				var n = document.getElementById("numero").value;
+				if(n >= 1 && n <= 5)
+					alert("Número correto.");
+				else {
+					alert("Número incorreto. Digite um número entre 1 e 5");
+				}
+			}
+			var num = document.getElementById("numero");
+			num.addEventListener("change", valida);
+			
+		</script>
+	</body>
+</html>

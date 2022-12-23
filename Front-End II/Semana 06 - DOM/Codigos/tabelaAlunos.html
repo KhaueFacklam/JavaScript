@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		@import "https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic&subset=latin,cyrillic";
+
+		* {
+			margin:0;
+			padding:0;
+			border:0;
+			list-style:none;
+			vertical-align:baseline;
+		}
+
+		body {
+		  font-family: 'RobotoDraft', 'Roboto', 'Helvetica Neue, Helvetica, Arial', sans-serif;
+		  font-style: normal;
+		  font-weight: 300;
+		  font-size: 0.9rem;
+		  letter-spacing: 0.01rem;
+		  color: #212121;
+		  background-color: #e7e7e7;
+		}
+
+		#notas{
+			max-width: 960px;
+			margin:24px auto;
+		}
+
+		h2{
+			text-align: center;
+			font-weight: 500;
+			font-size: 1.1rem;
+			margin-bottom: 0.8rem;
+		}
+
+		table{
+			width:100%;
+			max-width: 100%;
+			text-align:left;
+			margin-bottom: 2rem;
+			background-color: #ffffff;
+			border-color: #e5e5e5;
+			border:0;
+			border-collapse:collapse;
+		}
+
+		thead{
+			color:#757575;
+			border-bottom:1px solid #e0e0e0;
+		}
+
+		tfoot{
+			color:#757575;
+			border-top:1px solid #e0e0e0;
+		}
+
+		th, tfoot>tr{
+			font-weight: 400;
+		}
+
+		tbody{
+			font-weight: 300;
+			color:#757575;
+			border-top:1px solid #e0e0e0;
+		}
+
+		th,td{
+			padding: 0.85rem;
+		}
+
+		tbody>tr{
+			transition:background-color .3s,color 1s;
+		}
+
+		tbody>tr:hover{
+			background-color: #4C9ED9;
+			color:#fff;
+		}
+		div#input{
+			margin-top: 40px;
+			text-align: center;
+		}
+		input{
+			width:8rem;
+			height: 2rem;
+			font-size:0.85;
+			color:#757575;
+			text-align: center;
+			font-style: italic;
+			border-radius:5px; 
+		}
+		button{
+			width:8rem;
+			height: 2rem;
+			font-size:0.85;
+			background-color: #4C9ED9;
+			color:#ffffff;
+			font-weight: bolder;
+			text-align: center;
+			border-radius:5px;
+		}
+	</style>
+</head>
+<body>
+	<div id="input">
+		<input type="text" id="n" placeholder="Digite o Nome">
+		<input type="number" id="n1" placeholder="Digite o Nota 1">
+		<input type="number" id="n2" placeholder="Digite o Nota 2">
+		<button onclick="insereAluno()">Inserir</button>
+	</div>
+	<section id="notas">
+		<h2>Lista de alunos</h2>
+		<table id="alunos">
+			<thead>
+				<tr class="negrito">
+					<th>Número</th>
+					<th>Nome</th>
+					<th>Nota 1</th>
+					<th>Nota 2</th>
+					<th>Média</th>
+					<th>Situação</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr id="notaTemp">
+					<td>-</td>
+					<td>-</td>
+					<td>-</td>
+					<td>-</td>
+					<td>-</td>
+					<td>-</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="2" >Média da Turma</td>
+					<td></td>
+					<td></td>
+					<td id="mediaTurma"></td>
+					<td></td>
+				</tr>
+			</tfoot>
+		</table>
+	</section>
+	<script>
+		var alunoCount=1
+		var media=0
+		let mediaAlu=0
+		var	mediaTur=0
+		function insereAluno(){
+			//get lements and values
+			let nome = document.querySelector('#n').value
+			let nota1 = document.querySelector('#n1').value	
+			let nota2 = document.querySelector('#n2').value
+			let notaTemp = document.querySelector('#notaTemp')//remove
+			let mediaTurma = document.querySelector('#mediaTurma')
+			
+			//calculos
+				nota1 = Number(nota1)//converte para Number
+				nota2 = Number(nota2)//converte
+				mediaAlu = (nota1+nota2)/2
+				mediaTur = (mediaTur+mediaAlu)/alunoCount//calcula media da turma
+			
+			//create rows and cells
+			let table = document.querySelector('#alunos')
+			let newRow = table.insertRow(1)
+			for(let i=0; i<6; i++){
+				this["cel"+i] = newRow.insertCell([i])
+			}
+			
+			//imprime valores
+			cel0.innerHTML = alunoCount
+			cel1.innerHTML = nome
+			cel2.innerHTML = nota1
+			cel3.innerHTML = nota2
+			cel4.innerHTML = mediaAlu
+			cel5.innerHTML = 'Cursando'
+			mediaTurma.innerHTML= mediaTur
+			
+			//incrementos e removes
+			alunoCount++
+			notaTemp.remove()
+		}
+	</script>
+</body>
+</html>

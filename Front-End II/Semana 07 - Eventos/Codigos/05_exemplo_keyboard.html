@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		addEventListener("keydown", function(event){
+			console.log(event.keyCode);
+			if(event.keyCode==66){
+				document.body.style.backgroundColor="#0000ff";
+			}else if(event.keyCode==82){
+				document.body.style.backgroundColor="#ff0000";				
+			}else if(event.keyCode==71){
+				document.body.style.backgroundColor="#00ff00";				
+			}else{
+				document.body.style.backgroundColor="#ffffff";				
+			}
+		});
+	</script>
+</body>
+</html>

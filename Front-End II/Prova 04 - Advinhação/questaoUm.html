@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Questão 1</title>
+  </head>
+
+  <body>
+    <ul id="ul"></ul>
+
+    <script>
+      var tentativas = 0;
+
+      
+      var valorAleatorio = Math.floor(Math.random() * 100) + 1;
+      
+      window.addEventListener("load", tentativa(valorAleatorio));
+
+      function chama() {
+        tentativa(valorAleatorio);        
+      }
+
+      function tentativa(valor) {
+        var escolha = prompt("Tente acertar o número");
+        Number(escolha);
+        var ul = document.getElementById("ul");
+        var li = document.createElement("li");
+
+        if (escolha > valor) {
+          tentativas++;
+          li.innerHTML = `O número ${escolha} é maior que o valor secreto.`; // maior
+          ul.appendChild(li);
+          var tempo = setTimeout(chama, 2000);
+        }
+        
+        else if (escolha < valor) {
+          tentativas++;
+          li.innerHTML = `O número ${escolha} é menor que o valor secreto.`; // menor
+          ul.appendChild(li);
+          var tempo = setTimeout(chama, 2000);
+        }
+        
+        else {
+            tentativas++;
+
+            if (tentativas <= 10) {
+                li.innerHTML = `Você acertou o número ${valor} em ${tentativas} tentativas.`;
+                li.style.color = "#5b9d5b"
+                ul.appendChild(li);
+            }
+          
+            else if (tentativas > 10 && tentativas <= 15) {
+                li.innerHTML = `Você acertou o número ${valor} em ${tentativas} tentativas.`;
+                li.style.color = "#eeb310"
+                ul.appendChild(li);
+            }
+
+            else {
+                li.innerHTML = `Você acertou o número ${valor} em ${tentativas} tentativas.`;
+                li.style.color = "#ce0b0b"
+                ul.appendChild(li);
+            }
+        
+        }
+
+      }
+
+    </script>
+  </body>
+</html>

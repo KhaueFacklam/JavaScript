@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios Events</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        body{
+            display: grid;
+            grid-template-rows: 1fr 1fr;
+        }
+        main{
+            background-color: lightcyan;
+            width: 100%;
+        }
+        #section{
+            background-color: lightcoral;
+            width: 100%;
+        }
+        li {
+            background-color: antiquewhite;
+            margin: 15px 0px;
+        }
+
+        #menu {
+            color: green;
+            padding: 20px;
+        }
+
+        #items {
+            list-style: none;
+            padding-left: 19px;
+        }
+        .postit{
+            background-color: lightblue;
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: start;
+            padding: 10px;
+            width: 150px;
+            height: 200px;
+            border-radius: 10px;
+        }
+        .textBox{
+            width: 130px;
+            background-color: lightblue;
+        }
+        a {
+            text-decoration: none;
+            color: black;
+        }
+        #divMovel {
+            background-color: steelblue;
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+        #divMovel2 {
+            background-color: steelblue;
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        #janela{
+            background-color: black;
+            width: 250px;
+            height: 250px;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <input type="text" id="input1">
+        <input type="text" id="input2">
+        <input type="text" id="input3">
+        <button id="btnApagar">Apagar/Mostrar </button>
+        <button id="btnDesabilita">Desabilita</button>
+        <p id="pApagavel">Clique no botão</p>
+        <div id="menu">
+            <img src="fechado.png" alt="" id="iconImg"> MENU
+            <ul id="items">
+                <li><a href="">Item 1</a></li>
+                <li><a href="">Item 2</a></li>
+                <li><a href="">Item 3</a></li>
+            </ul>
+        </div>
+        <div id="divMovel"></div>
+        <div id="divMovel2"></div>
+        <ul id="ulDinamica">
+            <li>
+                Um
+            </li>
+            <li>
+                Dois
+            </li>
+            <li>
+                Três
+            </li>
+        </ul>
+    </main>
+    <section id="section"></section>
+
+    <script>
+        const input1 = document.querySelector('#input1') 
+        const input2 = document.querySelector('#input2')
+        const input3 = document.querySelector('#input3')
+        input1.focus()
+        function apagar() {
+            if (pApagavel.style.display == '') {
+                pApagavel.style.display = 'none'
+            }
+            else if (pApagavel.style.display == 'none') {
+                pApagavel.style.display = ''
+            }
+        }
+        function desabilita() {
+            document.querySelector('#btnApagar').removeEventListener('mousedown', apagar)
+        }
+        var btnApagar = document.querySelector('#btnApagar').addEventListener('mousedown', apagar);
+        var pApagavel = document.querySelector('#pApagavel');
+        var btnDesabilita = document.querySelector('#btnDesabilita').addEventListener('click', desabilita);
+
+        //MENU ABRIR -----------------------------------------------------------------
+        function abrirMenu() {
+            var items = document.querySelector('#items')
+            var iconImg = document.querySelector('#iconImg')
+            if (items.style.display == 'none') {
+                items.style.display = ''
+                iconImg.src = 'aberto.png'
+            }
+            else {
+                items.style.display = 'none'
+                inconImg.src = 'fechado.png'
+            }
+        }
+        var menu = document.querySelector('#menu').addEventListener('click', abrirMenu);
+
+        //LISTA APAGAVEL --------------------------------------------------------------
+        var ulDinamica = document.querySelector('#ulDinamica')
+        ulDinamica.addEventListener('click', function (event) {
+            const clickedElement = event.target
+            if (clickedElement.tagName === 'LI') {
+                clickedElement.remove()
+            }
+        })
+
+        //DIV MOVEL ------------------------------------------------------------------- 
+            const divMovel = document.querySelector('#divMovel')
+            divMovel.addEventListener('mousedown', pega)
+            function pega (){
+            document.addEventListener('mousemove', move) 
+            
+                function move (event) {
+                    divMovel.style.left = event.pageX + 'px'
+                    divMovel.style.top = event.pageY + 'px'
+                    divMovel.addEventListener('mouseup', solta)
+                }
+
+                function solta (){
+                    document.removeEventListener('mousemove', move)
+                }
+            }
+            
+
+        //MOVER COM TECLADO
+        var dx
+        var dy
+        var px 
+        var py
+        var vel
+        var obj
+        var temp
+        
+        function inicia() {
+            dx = 0
+            dy = 0
+            px = 0 
+            py = 0
+            vel = 15
+            obj = document.querySelector("#divMovel2")
+            document.addEventListener('keydown', teclaDw)
+            document.addEventListener('keyup', teclaUp)
+            tmp = setInterval(enterFrame, 20)   
+        }
+        window.addEventListener('load', inicia)
+        function teclaDw(){
+            var tecla = event.keyCode
+            if(tecla==37){
+                dx=-1
+            }else if(tecla==38){
+                dy=-1
+            }else if(tecla==39){
+                dx=1
+            }else if(tecla==40){
+                dy=1
+            }
+        }
+        function teclaUp(){
+            var tecla = event.keyCode
+            if(tecla==37){
+                dx=0
+            }else if(tecla==38){
+                dy=0
+            }else if(tecla==39){
+                dx=0
+            }else if(tecla==40){
+                dy=0
+            }
+        }
+        function enterFrame(){
+            px += dx * vel
+            py += dy * vel
+            obj.style.left = px + 'px'
+            obj.style.top = py + 'px'
+        }
+
+        //POSTIT
+        let postit = document.createElement('div')
+        postit.setAttribute('class', 'postit')
+        let textBox = document.createElement('input')
+        textBox.type = 'text'
+        textBox.placeholder = 'Escreva sua nota aqui...'
+        textBox.className = 'textBox'
+        let closeBtn = document.createElement('p')
+        closeBtn.innerHTML = 'X'
+        const section = document.querySelector('#section')
+        section.addEventListener('click', function(){
+            postit.style.left = event.pageX + 'px'
+            postit.style.top = event.pageY + 'px'
+            document.body.appendChild(postit)
+            postit.appendChild(closeBtn)
+            postit.appendChild(textBox)
+
+        })
+        closeBtn.addEventListener('click', function(){
+            postit.remove()
+        })
+
+        window.onload = function(){
+            let janela = document.createElement('div')
+            janela.setAttribute('id', 'janela')
+            section.appendChild(janela)
+        }
+    </script>
+</body>
+
+</html>

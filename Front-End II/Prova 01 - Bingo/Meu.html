@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <p id="valorSorteado"></p>
+
+
+
+
+
+
+    <script>
+
+        var ul = document.createElement("ul")
+        document.body.appendChild(ul)
+        var cont = 0
+
+
+
+        setInterval(imprimi, 1000)
+
+        function imprimi() {
+            var numero = Math.floor(99 * Math.random())
+            var p = document.querySelector("#valorSorteado")
+            p.innerHTML = (`VALOR SORTEADO: ${numero}`)
+
+            var li = document.createElement("li")
+            li.innerHTML = numero
+            ul.appendChild(li)
+            if (li.lenght > 3) {
+                return
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

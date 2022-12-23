@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>ESTUDO PROVA</title>
+</head>
+
+<body>
+
+
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum dolores voluptas praesentium accusamus dolorem
+        placeat ad. Ex vitae cumque eaque reiciendis at, exercitationem eveniet dolores obcaecati debitis, facilis
+        molestiae quod?</p>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum dolores vo</p>
+    <p>adipisicing elit. Nostrum dolores voluptas praesentium accusamus dolorem</p>
+    <p>adipisicing elit. Nostrum dolores voluptas praesentium accusamus dolorem</p>
+
+    <input id="input" type="text">
+    <button id="button">Xecar</button>
+
+
+    <script>
+
+
+
+
+        /*  Crie o app busca, que recebe uma palavra e altera a cor de fonte de todos os parágrafos de uma
+        página que apresentem essa palavra.*/
+
+        document.querySelector("button").addEventListener("click", trocaCor)
+
+        function trocaCor() {
+
+            var palavra = document.querySelector("#input").value
+            var ps = document.querySelectorAll("p")
+
+            for (let i = 0; i < ps.length; i++) {
+
+                if (ps[i].includes(palavra)) {
+
+                    ps[i].style.color = "blue"
+
+                }
+            }
+
+        }
+
+
+
+
+
+
+
+
+        /*2 - Crie uma função que receba as notas de um aluno e calcule a sua nota final
+        na disciplina. A função pode receber 3 ou 4 argumentos. No primeiro caso,
+        são as notas de cada uma das avaliações do semestre (A1 e A2, com peso
+        3.5 e A3 com peso 3). O quarto argumento (R1), se fornecido, indica a nota
+        da reavaliação final do aluno. Assim, a sua função deve fazer a conta para 3
+        argumentos (o aluno não ficou em reavaliação) e para 4 argumentos (o aluno
+        que ficou em reavaliação). No caso de reavaliação, a nota final será a maior
+        nota entre a média das três avaliações e a nota da reavaliação
+
+
+        var A1 = prompt("Nota 1")
+        var A2 = prompt("Nota 2")
+        var A3 = prompt("Nota 3")
+
+
+        calcula(A1, A2, A3)
+
+        function calcula(nota1, nota2, nota3) {
+            var peso1 = (nota1 * 3.5)
+            var peso2 = (nota2 * 3.5)
+            var peso3 = (nota3 * 3)
+            var media = (peso1 + peso2 + peso3) / 10
+
+            if (media >= 6) {
+                alert(`Aluno aprovado com ${media}`)
+            }
+            if (media < 6) {
+                alert(`Aluno não aprovado com ${media}`)
+                var exame = prompt(`Qual a nota do exame?`)
+
+                if (exame >= 6) {
+                    alert(`Aluno aprovado no exame com nota ${exame}`)
+                }
+
+                else if (exame > media) {
+                    alert(`Aluno reaprovado com nota ${exame}`)
+                }
+                else {
+                    alert(`Aluno reaprovado com nota ${media}`)
+                }
+            }
+        }
+
+        3 - Um número é dito perfeito quando ele é igual a soma de seus fatores. Por
+        exemplo, os fatores de 6 são 1, 2 e 3 (ou seja, podemos dividir 6 por 1, por
+        2 e por 3 sem que sobre algo no resto - divisão inteira) e 6=1+2+3, logo 6 é
+        um número perfeito. Escreva uma função que recebe um inteiro e diz se ele
+        é perfeito ou não. Faça um script que peça um inteiro n e mostre todos os
+        números perfeitos até n, chamando a função criada*/
+
+
+        /*4 - Crie uma função que receba 2 parâmetros (H e M), os quais correspondem
+        às horas (H) e minutos (M) de uma hora na notação de 24 horas (15:45). A
+        função deverá converter da notação de 24 horas para a notação de 12 horas.
+        Por exemplo, a função deve converter 15:45 em "3:45 P.M.".
+
+        var H = 15
+        var M = 45
+
+        converte(H, M)
+
+        function converte(H, M) {
+
+            if (H >= 13) {
+
+                var hora = ((H + 11) % 12 + 1)
+
+                if (H >= 12 && H < 24) {
+                    alert(`São ${hora}:${M} P.M`)
+                }
+
+                if (H >= 24 && H < 12) {
+                    alert(`São ${hora}:${M} A.M`)
+                }
+            }
+
+            else {
+                alert(`São ${H}:${M}A.M`)
+            }
+        }
+
+        5 - Crie uma função que recebe três parâmetros: a, b e c. A função deverá
+        calcular o Delta (Δ) de uma função de segundo grau. O valor de delta é dado
+        pela seguinte expressão: Δ = b2 – 4ac, em que a, b e c são coeficientes da
+        equação.
+
+        var a = prompt("Informe valor de A")
+        var b = prompt("Informe valor de B")
+        var c = prompt("Informe valor de C")
+
+        calulaDelta(a, b, c)
+
+        function calulaDelta(a, b, c) {
+            var delta = (b * b) - 4 * a * c
+            alert(`Delta = ${delta}`)
+        }
+
+
+        6 - Elabore um script que leia dois números e imprima em uma tabela (gerada
+        dinamicamente) o resultado das operações aritméticas soma, produto,
+        divisão e resto da divisão (%) entre esses números.
+
+        Exemplo de tabela que deve ser gerada para as entradas 2 e 1.
+
+        Operação Valor
+        2 + 1 3
+        2 * 1 2
+        2 / 1 2
+        2 % 1 0                         
+
+        var valor1 = prompt("Informe valor 1")
+        var valor2 = prompt("Informe valor 2")
+        valor1 = Number(valor1)
+        valor2 = Number(valor2)
+        
+        alert(`${ valor1 } + ${ valor2 } = ${ valor1 + valor2}`)
+        alert(`${ valor1 } * ${ valor2 } = ${ valor1 * valor2}`)
+        alert(`${ valor1 } / ${ valor2 } = ${ valor1 / valor2}`)
+        alert(`${ valor1 } % ${ valor2 } = ${ valor1 % valor2}`)
+
+
+        7 - Crie uma função "compara" que recebe como parâmetros 2 números
+    aleatórios entre 1 e 10 e verifica qual deles é o maior, mostrando uma
+    mensagem adequada
+
+        var n1 = Math.floor(10 * Math.random())
+        var n2 = Math.floor(10 * Math.random())
+        compara(n1, n1)
+
+        function compara(n1, n1) {
+            if (n1 > n2) {
+                alert(`${n1} maior que ${n2}`)
+            }
+
+            else if (n1 < n2) {
+                alert(`${n1} menor que ${n2}`)
+            }
+
+            else {
+                alert(`Valores são iguais`)
+            }
+        }
+
+
+*/
+
+
+    </script>
+</body>
+
+</html>

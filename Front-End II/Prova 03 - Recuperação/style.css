@@ -1,0 +1,22 @@
+.missao {
+    font-size: 20px;
+    color: black;
+    text-align: center;
+    background-color: white;
+}
+
+.missao {
+    font-size: 70px;
+    color: white;
+    text-align: center;
+    background-color: green;
+    border: solid 3px black;
+}
+
+.falha {
+    font-size: 70px;
+    color: white;
+    text-align: center;
+    background-color: red;
+    border: solid 3px black;
+}

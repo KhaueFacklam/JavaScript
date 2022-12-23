@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Exemplo 03</title>
+	</head>
+	<body>
+		<form id="myForm" action="#">
+			<input type="button" id="btn1" value="Clique aqui">
+			<input type="button" id="btn2" value="Texto original">
+		</form>
+		<script>
+			function mudarTexto(){
+				btn = document.getElementById("btn2");
+				btn.value = "Mudei o texto do botão ;)";
+			}
+			function desfazer(){
+				this.value = "Texto original";
+			}
+
+			document.getElementById("btn1").addEventListener("click", mudarTexto);
+			document.getElementById("btn2").addEventListener("click", desfazer);
+		</script>
+	</body>
+</html>

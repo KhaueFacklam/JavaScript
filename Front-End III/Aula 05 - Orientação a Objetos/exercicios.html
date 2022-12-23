@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 100;
+            font-size: 4rem;
+            letter-spacing: 0.01rem;
+            background-color: #ffffff;
+        }
+
+        th {
+            border-radius: 2px;
+            background-color: rgb(226, 226, 226);
+            height: 150px;
+            width: 150px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <table id="table">
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </table>
+
+    <script>
+
+        jogadas = 0
+
+        function Jogo() {
+
+            this.array = [
+                [0, 1, 2],
+                [3, 4, 5],
+                [6, 7, 8]
+            ]
+        }
+
+        let jogo = new Jogo()
+
+        function Jogador(cor, simbolo) {
+            this.cor = cor
+            this.simbolo = simbolo
+        }
+
+        let jogador1 = new Jogador("#0062a3", "O")
+        let jogador2 = new Jogador("#cf142b ", "X")
+
+
+        let table = document.getElementById("table")
+        table.addEventListener("click", renderizar)
+
+
+        function renderizar() {
+
+            var escolha = event.target
+
+            if (jogadas % 2 == 0 && escolha.innerText != jogador1.simbolo && escolha.innerText != jogador2.simbolo) {
+                escolha.innerText = jogador1.simbolo
+                escolha.style.color = jogador1.cor
+            } else if (escolha.innerText != jogador1.simbolo && escolha.innerText != jogador2.simbolo) {
+                escolha.innerText = jogador2.simbolo
+                escolha.style.color = jogador2.cor
+            }
+
+            jogadas++
+        }
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

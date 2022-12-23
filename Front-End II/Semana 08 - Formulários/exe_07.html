@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Exemplo 07</title>
+	</head>
+	<body>
+		<form id="myForm" action="#">
+			<p>Selecione um estado</p>
+			<select id="estado">
+				<option value=""></option>
+				<option value="RJ">Rio de Janeiro</option>
+				<option value="SP">São Paulo</option>
+				<option value="MG">Minas Gerais</option>
+			</select>
+		</form>
+		<script>
+			var estado = document.getElementById("estado");
+			// Pegando o índice
+			indice = estado.selectedIndex;
+			// Pegando o valor
+			valor = estado[indice].value;
+		</script>
+	</body>
+</html>

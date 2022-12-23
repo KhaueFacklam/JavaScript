@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Nodos HTML</title>
+  </head>
+  <body>
+    <main>
+      <input type="text" id="palavra" placeholder="digite">
+      <div id="bloco1" style="background-color: tomato;">
+        <p>linha 0 moranguinho</p>
+        <p>linha 1 gremio</p>
+        <p>linha 2 moranguinho</p>
+        <p>linha 3 gremio</p>
+        <p>linha 4 moranguinho</p>
+      </div>
+      <div id="bloco2">
+        <p>linha 5 gremio</p>
+        <p>linha 6 moranguinho</p>
+        <p>linha 7 gremio</p> 
+        <p>linha 8 moranguinho</p>
+        <p>linha 9 gremio</p>
+      </div>
+      <button onclick="buscar()">Buscar</button>
+      <button onclick="suma()">Some</button>
+      <button onclick="novaDiv()">Nova Div</button>
+      <div id="novaDiv" style="width: 150px;">
+        ssdfdsfds
+      </div>
+    </main>
+  </body>
+  
+  <script>
+    function buscar(){
+      let p = document.querySelectorAll('p')
+      let palavra = document.querySelector('#palavra').value
+
+      for(let i=0; i<p.length; i++){
+        if(p[i].innerText.indexOf(palavra)!=-1){
+          p[i].style.color = 'blue'
+        }
+      }
+    }
+
+    function suma(){
+      let p = document.querySelectorAll('p')
+      let palavra = document.querySelector('#palavra').value
+      for(let i=0; i<10; i++){
+        if(p[i].innerText.indexOf(palavra)!=-1){
+          p[i].style.display='none'
+        }
+      }
+    }
+
+    function novaDiv(){
+      //linkando elementos
+      let texto = document.querySelector('#palavra').value
+      let novaDiv = document.querySelector('#novaDiv')
+      //criando elemento
+      var novoEl = document.createElement("div")
+      novoEl.innerText = texto
+      let r = Math.floor(Math.random()*255)
+          g = Math.floor(Math.random()*255)
+          b = Math.floor(Math.random()*255)
+      novaDiv.appendChild(novoEl).style.backgroundColor='rgb('+r+','+g+','+b+')'
+    }
+    
+  </script>    

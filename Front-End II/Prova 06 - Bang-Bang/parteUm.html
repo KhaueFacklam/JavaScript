@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body id="body">
+    <form>
+      <label for="timeA">Time A</label>
+      <input type="text" name="timeA" id="timeA" />
+      <label for="timeA">Time B</label>
+      <input type="text" name="" id="timeB" />
+      <input type="button" value="Cadastrar Set" id="cadastro" />
+      <p id="teste"></p>
+    </form>
+
+    <script>
+      var venceuA = 0;
+      var venceuB = 0;
+
+      var body = document.getElementById("body");
+      var cadastro = document.getElementById("cadastro");
+      var p = document.getElementById("teste");
+      var timeA = document.getElementById("timeA").value;
+      var timeB = document.getElementById("timeB").value;
+
+      cadastro.addEventListener("click", cadastrar);
+
+      function cadastrar() {
+        timeA = document.getElementById("timeA").value;
+        timeB = document.getElementById("timeB").value;
+        timeA = String(timeA);
+        timeB = String(timeB);
+        
+        if (timeA >= 25 || timeB >= 25) {
+            var paragrafo = document.createElement("p");
+    
+            timeA = String(timeA);
+            timeB = String(timeB);
+    
+            if (timeA > timeB) {
+              venceuA++;
+              paragrafo.innerText = `Time A${timeA}X${timeB}Time B`;
+              body.appendChild(paragrafo);
+            } else if (timeB > timeA) {
+              venceuB++;
+              paragrafo.innerText = `Time A${timeA}X${timeB}Time B`;
+              body.appendChild(paragrafo);
+            }
+    
+            if (venceuA > 2) {
+              paragrafo.innerText = `Time A venceu por ${venceuA}X${venceuB}`;
+              paragrafo.style.background = "#009900";
+              body.appendChild(paragrafo);
+            } else if (venceuB > 2) {
+              paragrafo.innerText = `Time B venceu por ${venceuB}X${venceuA}`;
+              paragrafo.style.background = "#009900";
+              body.appendChild(paragrafo);
+            }
+        } else {
+            alert("Erro, esse placar não termina o Set")
+        }
+
+      }
+    </script>
+  </body>
+</html>

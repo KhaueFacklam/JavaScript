@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<p id="pClicavel">clique</p>
+	<script>
+		document.getElementById("pClicavel").addEventListener("mousedown", function(event){
+			if (event.which == 1)
+				console.log("botão esquerdo");
+			else if (event.which == 2)
+				console.log("botão central");
+			else if (event.which == 3)
+				console.log("botão direito");
+
+		});
+	</script>
+</body>
+</html>

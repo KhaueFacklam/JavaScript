@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		function chamadaTimeout(){
+			console.log("Passaram-se 10 segundos desde a carga da página");
+		}
+		function createEvent(){
+			console.log("oi");
+			setTimeout(chamadaTimeout,10000);
+			console.log("oi");
+		}
+		window.addEventListener("load",createEvent);
+	</script>
+</head>
+<body>
+</body>
+</html>

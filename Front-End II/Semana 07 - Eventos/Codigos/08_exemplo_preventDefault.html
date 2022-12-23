@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<a href="teste.html" id="a1">Um elemento clicavel sem ação default</a>
+	<script>
+		document.getElementById("a1").addEventListener("click", function(event) {
+			console.log(this);
+			event.preventDefault();
+		});
+	</script>
+</body>
+</html>

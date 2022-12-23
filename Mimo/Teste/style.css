@@ -1,0 +1,27 @@
+p {
+    color: white;
+    background-color: lightblue;
+}
+
+.colorido {
+    color: yellow;
+    background-color: green;
+}
+
+#cor {
+    color: blue;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.item {
+    background-color: skyblue;
+    height: 100px;
+    padding: 20px;
+}
+
+.pink {
+    background-color: pink;
+}

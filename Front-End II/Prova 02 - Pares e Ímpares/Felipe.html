@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prova 2</title>
+    <style>
+        #container {
+            display: flex;
+            flex-flow: row wrap;
+        }
+        .divElemento {
+            width: 40px;
+            height: 40px;
+            border: solid 1px black;
+            margin: 2px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="num"> Informe um valor máximo a ser sorteado.
+    <button id="envia">OK</button>
+    <main id="container"></main>
+    <button id="pronto">PRONTO</button>
+    <div id="resultado"></div>
+
+    <script>
+        
+        var arr = []
+        document.querySelector('#num').focus()
+        document.addEventListener('keypress', function(event){
+            if(event.key==='Enter'){
+                document.querySelector("#envia").click();
+            }
+        })
+        document.querySelector('#envia').addEventListener('click', board)
+        function board(){
+            let num = document.querySelector('#num').value
+            if(num < 1){
+                    window.alert('Valor inválido! Por favor digitar valor inteiro positivo')
+            }
+            else{
+                for(let i=0; i<20; i++){
+                    arr[i] =  Math.floor(Math.random()*num)
+                }
+                this.removeEventListener('click', board)
+                criaElementos()
+            }
+        }
+
+        let container = document.querySelector('#container')
+        function criaElementos(){
+            let container = document.querySelector('#container')
+            for(let i=0; i<20; i++){
+              let elemento = document.createElement('div')
+              elemento.setAttribute('class', 'divElemento')
+              elemento.innerHTML = arr[i]
+              container.appendChild(elemento)
+            }
+        }
+
+        container.addEventListener('click', alteraElemento)
+        function alteraElemento(event) {
+            const elementoClicado = event.target
+            if (elementoClicado.tagName === 'DIV') {
+                if(elementoClicado.innerText%2==0){
+                    elementoClicado.style.color = 'white'
+                    elementoClicado.style.backgroundColor = '#090'
+                    elementoClicado.removeEventListener('click', alteraElemento)
+                }
+                else{
+                    elementoClicado.style.backgroundColor = '#f00'
+                    elementoClicado.style.color = 'white'
+                    elementoClicado.removeEventListener('click', alteraElemento)
+                }
+            }
+        }
+
+        document.querySelector('#pronto').addEventListener('click', pronto)
+        function pronto(){
+            container.removeEventListener('click', alteraElemento)
+            let arrElemento = document.querySelectorAll('.divElemento')
+            for(let i=0; i<20; i++){
+                if(arrElemento[i].innerText%2==0 && arrElemento[i].style.color!='white'){
+                    arrElemento[i].style.backgroundColor = '#ff0'
+                }
+            }
+            let resultado = document.querySelector('#resultado')
+            let pares = document.createElement('p')
+            let acertos = document.createElement('p')
+            let errosPar = document.createElement('p')
+            let errosImp = document.createElement('p')
+            let p = 0
+            let a = 0
+            let ei = 0
+            erros = 0
+            for(let i=0; i<20; i++){
+                if(arrElemento[i].innerText%2==0){
+                    p++
+                }
+                if(arrElemento[i].innerText%2==0 && arrElemento[i].style.color=='white'){
+                    a++
+                }
+                if(arrElemento[i].innerText%2!=0 && arrElemento[i].style.color=='white'){
+                    ei++
+                }
+            }
+            pares.innerHTML = `Valores pares ${p}`
+            acertos.innerHTML = `Acertos ${a}`
+            errosPar.innerHTML = `Valores pares não clicados (erros) ${p-a}`
+            errosImp.innerHTML = `Valores ímpares clicados (erros) ${ei}`
+            resultado.appendChild(pares)
+            resultado.appendChild(acertos)
+            resultado.appendChild(errosPar)
+            resultado.appendChild(errosImp)
+        }
+        
+    </script>
+</body>
+</html>

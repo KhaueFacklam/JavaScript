@@ -1,0 +1,11 @@
+div {
+    width: 200px;
+    height: 100px;
+    border: solid black;
+    background: color #fff888;
+    margin: 10px;
+}
+
+.verde {
+    background-color: #ddffcc;
+}

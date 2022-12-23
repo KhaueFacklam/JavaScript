@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+
+<body>
+	<p id="pClicavel1">clique aqui</p>
+	<p id="pClicavel2">clique aqui</p>
+	<p id="pClicavel3">clique aqui</p>
+	<div id="pClicavel4">clique aqui</div>
+
+	<script>
+		function avermelhou() {
+			this.style.color = "#ff0000";
+		}
+		document.getElementById("pClicavel1").addEventListener("click", avermelhou);
+		document.getElementById("pClicavel2").addEventListener("click", avermelhou);
+		document.getElementById("pClicavel3").addEventListener("click", avermelhou);
+		document.getElementById("pClicavel4").addEventListener("click", avermelhou);
+	</script>
+</body>
+
+</html>

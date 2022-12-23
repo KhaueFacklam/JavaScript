@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>ESTUDO PROVA</title>
+</head>
+
+<body>
+    <h3>QUESTÃO 2</h3>
+    <input id="nome" type="text" placeholder="nome">
+    <input id="sobrenome" type="text" placeholder="sobrenome">
+    <button id="botao">Saudação</button>
+    <br><br>
+
+
+    <h3>QUESTÃO 3</h3>
+    <img id="lampada" src="img/apagado.jpg">
+    <br><br>
+
+
+    <h3>QUESTÃO 4</h3>
+    <button id="verde">Verde</button>
+    <button id="amarelo">Amarelo</button>
+    <button id="vermelho">Vermelho</button>
+    <br><br>
+
+
+    <h3>QUESTÃO 5</h3>
+    <input id="quantia" type="number" placeholder="informe a quantia que possui">
+    <button id="calcular">Calcular</button>
+    <p id="resultado"></p>
+
+    <script>
+        let recebe, resultado, valor, metade, dobro
+
+        /*  1 - Faça um script que solicite que o usuário informe um número e calcule e
+        mostre através de um alert a metade e o dobro desse número
+       
+        valor = prompt("Informe um número:")
+        metade = valor / 2
+        dobro = valor * 2
+        alert("Metade de " + valor + " é " + metade + ", e o dobro de " + valor + " é " + dobro)
+        alert(`Metade de ${valor} é ${metade}, e o dobro de ${valor} é ${dobro}`)
+
+        
+        /*  2 - Faça um script que contenha 2 campos no HTML: “nome” e “sobrenome” de
+        uma pessoa e um botão “Saudação”. Ao clicar no botão exibir um alert com
+        a seguinte mensagem: Olá, {nome} {sobrenome}! JavaScript é legal ;) Substitua as variáveis “nome” e “sobrenome” pelos seus respectivos valores*/
+
+        document.querySelector("#botao").addEventListener("click", funcSaudacao)
+
+        function funcSaudacao() {
+            let nome = document.querySelector("#nome").value
+            let sobrenome = document.querySelector("#sobrenome").value
+            alert(`Olá, ${nome} ${sobrenome}! JavaScript é legal ;)`)
+        }
+
+        /*  3 - Altere o exemplo 2 visto em aula(lâmpada acesa / apagada) para que ao
+        invés de clicar, basta que o usuário passe o mouse sobre a lâmpada para
+        que ela acenda / apague(evento “mouseover”)*/
+
+        document.querySelector("#lampada").addEventListener("mouseover", funcTroca)
+
+        function funcTroca() {
+            //let img = document.querySelector("#lampada") OU
+
+            this.src = "img/aceso.jpg"
+            this.addEventListener("mouseout", function () {
+                this.src = "img/apagado.jpg"
+            })
+        }
+
+        /* 4 - Crie três botões em HTML chamados: “Verde”, “Amarelo” e “Vermelho”. Ao
+        serem clicados, o background-color da página deverá ser alterado dinamicamente*/
+        document.querySelector("#verde").addEventListener("click", funcVerde)
+        document.querySelector("#amarelo").addEventListener("click", funcAmarelo)
+        document.querySelector("#vermelho").addEventListener("click", funcVermelho)
+
+        function funcVerde() {
+            document.body.style.backgroundColor = "#7dd072"
+        }
+        function funcAmarelo() {
+            document.body.classList.toggle("amarelo")
+        }
+        function funcVermelho() {
+            document.body.setAttribute("class", "vermejo")
+        }
+
+        /* 5 - Imagine que um novo veículo foi lançado e você foi convidado para
+        implementar um programa para exibir algumas informações sobre a
+        autonomia no painel do veículo. Considere que o veículo consegue rodar
+        17km com apenas 1 litro de combustível e que cada litro de combustível
+        custa R$ 6,39. O usuário deverá informar quanto dinheiro possui e, com base no valor
+        informado, o programa deverá calcular quantos litros de combustível podem
+        ser comprados e quantos quilômetros o carro consegue andar com este tanto
+        de combustível. Utilize um campo de texto para que o usuário informe a quantia que ele
+        possui e um botão “Calcular” que, ao ser pressionado, calcula e mostra as
+        informações em um parágrafo de texto, conforme a mensagem a seguir:
+        Com R$ X reais, você compra Y litros de combustível e consegue
+        rodar Z km antes de abastecer novamente!*/
+
+        document.querySelector("#calcular").addEventListener("click", funcCalcula)
+
+        function funcCalcula() {
+            let gasolina = 6.39
+            let consumo = 16.1
+            let litros
+            let resultado
+
+            let quantia = document.querySelector("#quantia").value
+
+            litros = quantia / gasolina
+            resultado = litros * consumo
+
+            document.querySelector("#resultado").innerHTML = `Com R$ ${quantia} reais, você compra ${litros} litros de combustível e consegue
+rodar ${resultado} km antes de abastecer novamente!`
+        }
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Bingo comunitário</title>
+	<script type="text/javascript">
+		let numeros = [];
+		let contSorteados = 0;
+		let ultimoSorteado = 0;
+		for (let i = 1; i < 100; i++) {
+			numeros.push(i);
+		}
+		function mostraNum(x) {
+			let atual = document.getElementById("sorteado");
+			if (ultimoSorteado != 0) {
+				let li = document.createElement("li");
+				li.innerText = atual.innerText;
+				document.getElementById("lista").appendChild(li);
+			}
+			ultimoSorteado = x;
+			contSorteados++;
+			atual.innerText = ultimoSorteado;
+		}
+
+		function sorteia() {
+			var s = Math.floor(Math.random() * numeros.length);
+			return numeros.splice(s, 1);
+		}
+
+		function bingo() {
+			clearInterval(ctrlSorteio);
+			let atual = document.getElementById("sorteado");
+			if (ultimoSorteado != 0) {
+				let li = document.createElement("li");
+				li.innerText = atual.innerText;
+				document.getElementById("lista").appendChild(li);
+			}
+			atual.innerText = "BINGO!";
+
+		}
+
+		let ctrlSorteio = setInterval(function () {
+			mostraNum(sorteia());
+			if (contSorteados >= 40) {
+				bingo();
+			}
+		}, 5000);
+	</script>														
+</head>
+
+<body>
+	<h1>Bingo Comunitário</h1>
+	<h3>Número sorteado</h3>
+	<h5 id="sorteado">--</h5>
+	<h3>Números anteriores</h3>
+	<ul id="lista">
+	</ul>
+</body>
+
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Forca</title>
+</head>
+
+<body>
+    <button id="botao">Sortear palavra</button>
+    <form>
+        <input id="input" type="value">
+        <input id="botao2" type="button" value="ENVIAR">
+    </form>
+    <section id="section"></section>
+    <p id="p1"></p>
+    <p id="p2"></p>
+
+
+    <script>
+        var palavra;
+        var controleTentativas = 0;
+        var numeroAcertos = 0;
+
+        var img = document.createElement("img");
+        var botao = document.getElementById("botao");
+        botao.addEventListener("click", sorteia)
+        var botao2 = document.getElementById("botao2");
+        botao2.addEventListener("click", entrada);
+
+        var palavras = ["abacaxi", "obrigado", "prova"];
+        div = [];
+
+
+
+
+        function sorteia() {
+            palavra = palavras[Math.floor(Math.random() * palavras.length)];
+
+            var section = document.getElementById("section");
+            img.src = "imgs/forca0.png"
+            section.appendChild(img);
+
+            for (let i = 0; i < palavra.length; i++) {
+                var div = document.createElement("div");
+                section.appendChild(div);
+            }
+        }
+
+        function entrada() {
+            var input = document.querySelector("input#input");
+            var letra = input.value;
+            verifica(letra);
+        }
+
+        function verifica(letra) {
+            var count = 0;
+
+            for (let i = 0; i < palavra.length; i++) {
+                if (letra == palavra[i]) {
+                    count++;
+                }
+            }
+
+            if (count != 0) {   // acertou
+                for (let i = 0; i < palavra.length; i++) {
+                    if (letra == palavra[i]) {
+                        var div = document.getElementsByTagName("div")[i];
+                        div.innerHTML = letra;
+                        numeroAcertos++;
+                    }
+                }
+
+            }
+
+            else {  // errou
+                controleTentativas++;
+                var p2 = document.getElementById("p2")
+                p2.innerHTML = "não funcionou"
+                img.src = `imgs/forca${controleTentativas}.png`
+            }
+
+            if (numeroAcertos == palavra.length) {
+                alert("Parabens");
+            } else if (controleTentativas == 6) {
+                alert("Perdeu! que pena");
+            }
+
+
+        }
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

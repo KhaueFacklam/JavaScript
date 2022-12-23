@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Num Aleatório</title>
+</head>
+<body>
+    <form name="form">
+        <input type="number" name="numero">
+        <input type="button" value="Enviar" id="enviar">
+    </form>
+    <ul id="mensagem"></ul>
+    <script>
+        var numero;
+        var cont = 0;
+        addEventListener("load", function () {
+            numero = Math.floor(Math.random() * 100 +1);
+        })
+
+        function tentativa(num) {
+            cont++;
+            let lista = document.getElementById("mensagem");
+            let linha = document.createElement("li");
+            if(num < numero){
+                linha.innerHTML = "O número "+num+" é menor do que o valor secreto"
+            }else if(num > numero){
+                linha.innerHTML = "O número "+num+" é maior do que o valor secreto"
+            }else{
+                linha.innerHTML = "Você acertou o número "+num+" em "+cont+" tentativas"
+                if(cont <= 10){
+                    linha.style.color = '#5b9d5b'
+                }else if(cont <= 15){
+                    linha.style.color = '#eeb310'
+                }else{
+                    linha.style.color = '#ce0b0b'
+                }
+            }
+            lista.appendChild(linha)
+        }
+
+        document.querySelector("#enviar").addEventListener("click",function () {
+            let num = Number(document.form.numero.value);
+
+            if (num > 0 && num <= 100) {
+                tentativa(num);
+            }else{
+                let linha = document.createElement("li")
+                let lista = document.getElementById("mensagem");
+                linha.innerHTML = "Valor digitado inválido! Digite um valor entre 1 e 100";
+                linha.style.backgroundColor = 'red';
+                lista.appendChild(linha);
+            }
+        })
+    </script>
+</body>
+</html>

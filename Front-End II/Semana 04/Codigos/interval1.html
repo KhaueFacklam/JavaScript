@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		var i =1;
+		var intervalo;
+		function chamadaInterval(){
+			console.clear();
+			console.log(i+" elefantes incomodam muita gente...");
+			console.log(++i + " elefantes incomodam, incomodam muito mais...");
+		}
+		function createEvent(){
+			console.log("Atenção");
+			intervalo = setInterval(chamadaInterval,5000);
+			console.log("para a música:");
+		}
+		window.onload = createEvent;
+	</script>
+</head>
+<body>
+</body>
+</html>

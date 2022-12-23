@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Nodos HTML</title>
+  </head>
+    <style type="text/css">
+      body{
+        background-color: #000;
+      }
+      #container{
+        position:absolute;
+        top:100px;
+        left:300px;
+      }
+      img{
+        position:absolute;
+        top:0px;
+        left:0px;
+      }
+      #terra{
+        z-index: 20;
+      }
+      #sol{
+        z-index: 50;
+      }
+      #solarSist{
+        position: absolute;
+        top: 200px; 
+        left: 600px;
+      }
+      #terraSist{
+        position: absolute;
+      }
+    </style>
+  <body>
+    <div id="solarSist">
+      <div id="terraSist">
+        <img alt="lua" src="lua.png" id="lua"/>
+        <img alt="terra" src="terra.png" id="terra"/>
+      </div>
+      <img alt="sol" src="sol.png" id="sol"/>      
+    </div>
+    <script>
+      var lua = document.getElementById("lua");
+      var terra = document.getElementById("terraSist");
+      var luaAngle = 0, terraAngle=0, lastTime = null;
+      var topLua, topTerra;
+      function animate(time) {
+        if (lastTime !== null){
+          luaAngle += (time - lastTime) * 0.004;
+          terraAngle += (time - lastTime) * 0.0008;
+        }
+        lastTime = time;
+        topLua=(Math.sin(luaAngle) * 40);
+        topTerra=(Math.sin(terraAngle) * 80);
+        lua.style.top =  topLua+ 20+"px";
+        terra.style.top =  topTerra+ 80+"px";
+        lua.style.left = (Math.cos(luaAngle) * 100) + 20+ "px";
+        terra.style.left = (Math.cos(terraAngle) * 500) + 40+ "px";
+        if(topLua<0){
+          lua.style.zIndex=10;
+        }else{
+          lua.style.zIndex=30;
+        }
+        if(topTerra<0){
+          terra.style.zIndex=20;
+        }else{
+          terra.style.zIndex=70;
+        }
+        
+        requestAnimationFrame(animate);
+      }
+      requestAnimationFrame(animate);
+    </script>  
+  </body>
+</html>

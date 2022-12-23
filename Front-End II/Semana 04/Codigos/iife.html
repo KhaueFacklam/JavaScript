@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Closures</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+	<script>
+		var $ = "barbeiragem de código"; //Sem usar a IIFE essa linha geraria um erro na execução do código jQuery
+		console.log("log executado antes o IIFE");
+		(function($) {
+			console.log('log executado no IIFE');
+	  		$(document).ready(function(){
+	    		console.log('log do ready()');
+	  		});
+		})(jQuery);
+		console.log("log executado após o IIFE");
+	</script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stytle.css">
+    <title>questão dois</title>
+</head>
+
+<body id="body">
+
+    <h2>Pontos: </h2>
+    <p id="pontos">0</p>
+
+
+
+    <script>
+        var pontos = 0
+        var imagens = []
+
+        var body = document.getElementById("body")
+        var pontuacao = document.getElementById("pontos")
+
+
+
+        window.addEventListener("load", anexar);
+
+
+        function anexar() {
+            chama()
+        }
+
+        function chama() {
+            var imagem = document.createElement("img");
+            imagem.src = "fire.png"
+            var vertical = Math.floor(Math.random() * 96);
+            var horizontal = Math.floor(Math.random() * 98);
+            imagem.style.top = vertical + 'vh';
+            imagem.style.left = horizontal + 'vw';
+            imagem.addEventListener("click", contabilizar)
+            body.appendChild(imagem);
+            imagens.push(imagem)
+            if (imagens.length > 2) {
+                imagem.removeEventListener("click", contabilizar)
+                window.removeEventListener("load", anexar);
+                pontuacao.innerText = "Fim de jogo"
+            } else {
+                setTimeout(chama, 2000);
+            }
+        }
+
+        function contabilizar() {
+            this.setAttribute("src", "")
+            imagens.pop()
+            pontuacao.innerText = pontos
+            pontos++
+
+        }
+
+
+
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

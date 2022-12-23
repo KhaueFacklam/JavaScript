@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Exemplo 04</title>
+	</head>
+	<body>
+		<form id="myForm" action="#">
+			<p>Como você vai querer o seu café?</p>
+			<p><input type="checkbox" id="creme" value="creme"> Com creme
+			<input type="checkbox" id="acucar" value="açúcar"> Com açúcar</p>
+			<p><input type="text" id="resposta" size="50"></p>
+			<input type="button" id="btn1" value="Fazer o pedido">
+		</form>
+		<script>
+			function pedido(){
+				// guarda as referencias para os objetos
+				var creme = document.getElementById("creme")
+				var acucar = document.getElementById("acucar")
+				var resposta = document.getElementById("resposta")
+				var txt = ""
+				
+				// Verificando o que foi selecionado
+				if(creme.checked)
+					txt = txt + creme.value + " ";
+				if(acucar.checked)
+					txt = txt + acucar.value + " ";
+				
+				// Escreve a resposta
+				if(txt == "")
+					resposta.value = "Você pediu um café simples"
+				else
+					resposta.value = "Você pediu um café com: " + txt
+			}
+
+			document.getElementById("btn1").addEventListener("click", pedido);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Exemplo alunos</title>
+      <script type="text/javascript">
+         function todos1(){
+            var i;
+            for(i = 0; i<document.f.alunos.length; ++ i)
+               document.f.alunos[i].checked = true;
+         }
+
+         function todos2(){
+            var i;
+            for(i = 0; i<document.f.alunos.length; ++ i)
+               document.f.alunos[i].click();
+         }
+      </script>
+   </head>
+   <body>
+      <h3>Marcando um grupo de checkboxes...</h3>
+      <p>Marque os alunos:<br>
+         <form name=f>
+            <input type="checkbox" name="alunos" value="1">Alessandra<br>
+            <input type="checkbox" name="alunos" value="2">José Carlos<br>
+            <input type="checkbox" name="alunos" value="3">Marcelo<br>
+            <input type="checkbox" name="alunos" value="4">Renata<br>
+            <input type=button value="marcar todos" onclick="todos1()">
+            <input type=button value="marcar / desmarcar" onclick="todos2()">
+         </form>
+      </body>
+   </html>

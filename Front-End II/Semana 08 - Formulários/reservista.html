@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Reservista</title>
+	</head>
+	<body>
+		<p>Se o certificado de reservista for preenchido, então o sexo é masculino...<br>
+			Se o sexo é feminino, então o certificado de reservista não pode ser preenchido...
+			<form name="f">
+				Certificado de Reservista: <input type=text name="reserva" onchange="document.f.sexo[0].checked = true;"><br>
+				CPF: <input type=text name="cpf"><br>
+				Sexo:<input type=radio name="sexo" value="M">Masculino
+				<input type=radio name="sexo" value="F" onclick="document.f.reserva.value=''">Feminino
+			</form>
+		</body>
+	</html>

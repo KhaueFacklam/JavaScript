@@ -1,0 +1,18 @@
+<script type="text/javascript">
+    var varfora="declarada com var antes if aparece\n";
+    let letfora="declarada com let antes if aparece\n";
+    if(true){
+        var vardentro="declarada com var dentro do if aparece\n";
+        let letdentro="declarada com let dentro do if aparece\n";
+        console.log("dentro do if variável:\n");
+        console.log(varfora);
+        console.log(letfora);
+        console.log(vardentro);
+        console.log(letdentro);
+    }
+    console.log("depois do if variável:\n");
+    console.log(varfora);
+    console.log(letfora);
+    console.log(vardentro);
+    console.log(letdentro);
+</script>

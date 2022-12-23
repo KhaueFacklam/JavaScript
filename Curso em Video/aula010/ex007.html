@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style.css">
+    <title>Somando Núumeros</title>
+</head>
+
+<body>
+    <h1>Somando Valores</h1>
+    <input type="number" name="textn1" id="textn1"> +
+    <input type="number" name="textn2" id="textn2">
+    <input type="button" value="somar" id="botaoSoma">
+    <div id="result">O resultado é...</div>
+
+
+    <script>
+        var botaoSoma = document.querySelector("input#botaoSoma")
+        botaoSoma.addEventListener("click", somar)
+        var t1 = document.querySelector("input#textn1")
+        var t2 = document.querySelector("input#textn2")
+
+        function somar() {
+            var result = document.querySelector("div#result")
+            var n1 = Number(t1.value)
+            var n2 = Number(t2.value)
+            var soma = n1 + n2
+            result.innerHTML = `O resultado é ${soma}`
+        }
+
+
+    </script>
+
+</body>
+
+</html>

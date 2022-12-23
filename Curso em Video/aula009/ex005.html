@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Script</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+
+<body>
+
+    <h1 class="h1">Iniciando estudos DOM</h1>
+    <p>Aqui vai o resulado</p>
+    <p name="p2">Aprendendo a usar o <strong>DOM</strong> em JavaScript.</p>
+    <div id="msg">Clique em mim</div> <br>
+    <h2>Por SELETOR:</h2>
+    <h5 id="h5">Uma frase qualquer</h5>
+    <h6 class="h6">Uma outra frase qualquer</h6>
+
+    <script>
+        //Selecionado por TAG
+        var body = document.body
+        body.style.background = "black"
+        var p1 = document.getElementsByTagName("p")[0]
+        p1.style.color = "blue"
+        //imprimindo diretamente na tela
+        document.write(`Está escrito assim: ${p1.innerText}`)
+
+
+        //Selecionado por ID
+        var d = document.getElementById("msg")
+        d.style.background = "green"
+        //ou alterando diretamente
+        document.getElementById("msg").style.color = "blue"
+
+
+        //Selecionado por NOME
+        var p2 = document.getElementsByName("p2")[0]
+        p2.style.color = "yellow"
+
+
+        //Selecionado por CLASSE
+        var h1 = document.getElementsByClassName("h1")[0]
+        h1.style.background = "brown"
+
+
+        //Selecionado por SELETOR <-----------------
+        //por ID
+        var h5 = document.querySelector("h5#h5")
+        h5.style.background = "blue"
+        //ou por Classe
+        var h6 = document.querySelector("h6.h6")
+        h6.innerText = "Novo texto"
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

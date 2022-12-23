@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+    <script>
+
+        function Quadrado() {
+            this.cor = "#000"
+            this.x = 0
+            this.y = 0
+            this.lado = 1
+            this.div = null
+
+            this.crescer = function (valor) {
+                this.lado = this.lado + valor
+            }
+
+            this.diminuir = function (valor) {
+                this.lado = this.lado - valor
+            }
+
+            this.getPosicao = function () {
+                console.log(this.x, this.y)
+
+            }
+
+            this.setPosicao = function (x, y) {
+                this.x = x
+                this.y = y
+
+            }
+
+            this.moveDireita = function (valor) {
+                this.x = this.x + valor
+            }
+
+            this.moveEsquerda = function (valor) {
+                this.x = this.x - valor
+            }
+
+            this.moveCima = function (valor) {
+                this.y = this.y + valor
+            }
+
+            this.moveBaixo = function (valor) {
+                this.y = this.y - valor
+            }
+
+            this.getArea = function () {
+                return this.lado * this.lado
+            }
+
+            this.getPerimeto = function () {
+                return this.lado + this.lado + this.lado + this.lado
+            }
+
+            this.renderizar = function () {
+                this.div = document.createElement("div")
+                this.div.style.backgroundColor = this.cor
+                this.div.style.width = `${this.lado}px`
+                this.div.style.height = `${this.lado}px`
+                document.body.appendChild(this.div)
+            }
+
+            this.update = function () {
+                this.div.remove()
+                quadrado.renderizar()
+            }
+        }
+
+
+        let quadrado = new Quadrado;
+
+        quadrado.renderizar()
+        
+        quadrado.lado = 75
+        
+        quadrado.moveCima(2)
+        quadrado.moveDireita(75)
+        
+        quadrado.update()
+        
+        console.log(quadrado.x)
+        console.log(quadrado.y)
+        
+        console.log(quadrado.getArea())
+        console.log(quadrado.getPerimeto())
+
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

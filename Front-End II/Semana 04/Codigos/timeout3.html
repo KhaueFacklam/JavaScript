@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	function Despertador(_tempo){
+		var tempo = _tempo;
+		var control;
+
+		function playAlarm(){
+			var audio = new Audio('alarme.mp3');
+			audio.play();						
+		}
+
+		this.init=function(){
+			console.log("alarme ocorrerá em 10 segundos");
+			control=setTimeout(playAlarm,tempo);			
+		};
+
+		this.cancel=function(){
+			console.log("alarme cancelado");
+			clearTimeout(control);
+		};
+	}
+
+	var desp=new Despertador(10000);
+
+	function createEvents(){
+		document.getElementById('alarme').addEventListener("click",desp.init);
+		document.getElementById('cancel').addEventListener("click",desp.cancel);
+	}
+
+	window.addEventListener("load",createEvents);
+	</script>
+</head>
+<body>
+<button id="alarme"> Habilitar alarme</button>
+<button id="cancel"> Desabilitar alarme</button>
+</body>
+</html>

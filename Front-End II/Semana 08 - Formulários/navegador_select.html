@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Navegador Favorito</title>
+	</head>
+	<body>
+		<form name="f">
+			Qual é o seu navegador favorito ?
+			<select name="selecao" onchange="document.f.resposta.value=document.f.selecao.options[document.f.selecao.selectedIndex].text">
+				<option>Internet Explorer</option>
+				<option>Google Chrome</option>
+			</select>
+			<br>Seu navegador favorito é:
+			<input type="text" name="resposta">
+		</form>
+	</body>
+</html>
+

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		function criaPonto(){
+			var _x = parseInt(Math.random()*800);
+			var _y = parseInt(Math.random()*600);
+			var red = parseInt(Math.random()*255);
+			var green = parseInt(Math.random()*255);
+			var blue = parseInt(Math.random()*255);
+			var raio = parseInt(Math.random()*19)+1;
+			var canvas = document.getElementById("tela");
+			var ctx=canvas.getContext("2d");
+			ctx.fillStyle = "rgb("+red+","+green+","+blue+")";
+			ctx.beginPath();
+		  ctx.arc(_x, _y, raio, 0, 2 * Math.PI);
+  		ctx.fill();
+		}
+		function createEvent(){
+			setInterval(criaPonto,2000);
+		}
+		window.onload = createEvent;
+	</script>
+</head>
+<body>
+	<canvas id="tela" width="800" height="600" style="border:1px solid #000000;">
+	</canvas>
+</body>
+</html>

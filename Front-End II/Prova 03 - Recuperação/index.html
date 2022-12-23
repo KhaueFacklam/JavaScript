@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Prova</title>
+
+</head>
+
+<body>
+
+
+    <div id="contagem">
+
+    </div>
+    <button id="botao">Iniciar Missão</button>
+    <div id="informacoes">
+        <input id="input" type="text">
+
+    </div>
+
+
+    <script>
+        document.querySelector("#botao").addEventListener("click", iniciarMissao)
+        document.querySelector("#input").addEventListener('keypress', function (event) {
+            if (event.key === 'Enter') {
+                document.querySelector("#input").click();
+            }
+        })
+
+
+        document.querySelector('#input').addEventListener('click', verifica)
+
+        function iniciarMissao() {
+            var numero = Math.floor(30 * Math.random())
+            var contagem = document.querySelector("#contagem")
+            contagem.innerHTML = "30"
+
+            setInterval(contagemRegressiva, 1000)
+
+            var informacoes = document.querySelector("#informacoes")
+            informacoes.innerHTML = "Boa Sorte"
+            informacoes.setAttribute("class", "missao")
+
+        }
+
+
+        function contagemRegressiva() {
+            contador--
+            contador.innerHTML = "teste"
+
+        }
+
+        function verifica() {
+            if (valor == numero) {
+                missaoCumprida()
+            }
+            if (valor < numero) {
+                informacoes = document.querySelector("#informacoes")
+                informacoes.innerHTML = "O número é maior!"
+            }
+            if (valor > numero) {
+                informacoes = document.querySelector("#informacoes")
+                informacoes.innerHTML = "O número é menor!"
+            }
+        }
+
+        function missaoFalhou() {
+            document.querySelector("#informacoes")
+            informacoes.innerHTML = "A missao falhou"
+            informacoes.setAttribute("class", "falha")
+        }
+
+        function missaoCumprida() {
+            contagemRegressiva.removeEventListener('click', contagemRegressiva)
+            var informacoes = document.querySelector("#informacoes")
+            informacoes.innerHTML = "Missao cumprida"
+            informacoes.setAttribute("class", "missao")
+        }
+
+
+    </script>
+
+</body>
+
+</html>

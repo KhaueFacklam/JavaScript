@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>ESTUDO PROVA</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        td {
+            width: 80px;
+            height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <table>
+        <thead>
+            <tr>
+                <td></td>
+                <td>Seno</td>
+                <td>Coseno</td>
+                <td>Tangente</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>0º</td>
+                <td class="seno">ssasa</td>
+                <td class="coseno">ssasa</td>
+                <td class="tangente">ssasa</td>
+            </tr>
+            <tr>
+                <td class="angulo">45º</td>
+                <td class="seno">ssasa</td>
+                <td class="coseno">ssasa</td>
+                <td class="tangente">ssasa</td>
+            </tr>
+            <tr>
+                <td>90º</td>
+                <td class="seno">ssasa</td>
+                <td class="coseno">ssasa</td>
+                <td class="tangente">ssasa</td>
+            </tr>
+            <tr>
+                <td>135º</td>
+                <td class="seno">ssasa</td>
+                <td class="coseno">ssasa</td>
+                <td class="tangente">ssasa</td>
+            </tr>
+            <tr>
+                <td>135º</td>
+                <td class="seno">ssasa</td>
+                <td class="coseno">ssasa</td>
+                <td class="tangente">ssasa</td>
+            </tr>
+            <tr>
+                <td>180º</td>
+                <td class="seno">ssasa</td>
+                <td class="coseno">ssasa</td>
+                <td class="tangente">ssasa</td>
+            </tr>
+            <tr>
+                <td>225º</td>
+                <td class="seno">ssasa</td>
+                <td class="coseno">ssasa</td>
+                <td class="tangente">ssasa</td>
+            </tr>
+            <tr>
+                <td>270º</td>
+                <td class="seno">ssasa</td>
+                <td class="coseno">ssasa</td>
+                <td class="tangente">ssasa</td>
+            </tr>
+            <tr>
+                <td>315º</td>
+                <td class="seno">ssasa</td>
+                <td class="coseno">ssasa</td>
+                <td class="tangente">ssasa</td>
+            </tr>
+            <tr>
+                <td>360º</td>
+                <td class="seno">ssasa</td>
+                <td class="coseno">ssasa</td>
+                <td class="tangente">ssasa</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <script>
+
+        /*  1 - Solicite a entrada de um conjunto de valores (separados por vírgula) com o
+        prompt. A seguir, mostre a quantidade de valores informados, os valores na
+        ordem em que foram digitados, em ordem crescente e ordem decrescente
+
+        var valores = prompt("Me passe valores")
+        var array = valores.split(", ")
+        alert(array.length)
+        alert(array)
+        alert(array.sort())
+        
+
+
+
+        2 - Construa uma função que receberá duas Strings e que retornará True ou
+        False caso todos os caracteres (independentemente de ser maiúsculo ou
+        minúsculo) estejam contidos em ambas as palavras. Exemplos:
+        
+        • “Mar” e “Ram” retornará True.
+        • “marte” e “morte” retornará False.
+        • “Banana” e “Ban” retornará True.
+        • “CaRoLiNa” e “cArOlInA” retornará True.
+        • “Hum” e “H um” retornará False    
+
+        str1 = "mal"
+        str2 = "lam"
+
+        function verificacaoDeString(str1, str2) {
+            return [...new Set([...str1])].sort().join("") === [...new Set([...str2])].sort().join("");
+        }
+
+        var teste = verificacaoDeString(str1, str2)
+        prompt(teste)
+
+
+        3 - Escreva um programa que receba um pequeno texto e a seguir mostre a
+        quantidade de palavras digitadas e a seguir as palavras em ordem alfabética
+        (palavra é definida por qualquer sequência de caracteres delimitada por
+        espaços em branco)
+
+        var texto = prompt("Escreva um frase")
+        var array = texto.split(" ")
+        
+        alert(array.length)
+        alert(array.sort())
+
+
+        4 - Escreva um programa que receba um pequeno texto e a seguir mostre as
+        palavras ordenadas pela quantidade de caracteres, da maior para a menor,
+        uma em cada linha. Caso exista mais de uma palavra com o mesmo
+        tamanho, elas deverão ser exibidas na mesma linha, separadas por vírgula
+
+        function sortByLength(array) {
+            array.sort(function (a, b) {
+                return b.length - a.length;
+            });
+        }
+       
+        var frase = ["Telescopes", "Glasses", "Eyes", "Monocles"]
+        
+        sortByLength(frase);
+
+        alert(frase)
+
+        5 - Crie um programa que solicita um valor numérico ao usuário e imprima cada
+        um dos seus dígitos por extenso.
+        Exemplo:
+        Número informado: 4571
+        Resultado: quatro, cinco, sete, um...
+
+        var numero = prompt("Digite um numero")
+        var vetor = numero.slice()
+        var tamanho = numero.length
+
+        var auxiliar = [" zero", " um", " dois", " três", " quatro", " cinco", " seis", " sete", " oito", " nove"]
+        var imprimi = [tamanho]
+
+        for (i = 0; i < tamanho; i++) {
+            var numero = vetor[i]
+
+            imprimi[i] = auxiliar[numero]
+        }
+
+        alert(imprimi)
+
+        6 - Escreva um programa que, a partir de um nome de uma pessoa informado
+        pelo usuário, exiba suas iniciais. As iniciais são formadas pela primeira letra
+        de cada nome, sendo que todas deverão aparecer em maiúsculas na saída
+        do programa. Note que os conectores e, do, da, dos, das, de, di, du não são
+        considerados nomes e, portanto, não devem ser considerados para a
+        obtenção das iniciais. As iniciais devem ser impressas em maiúsculas, ainda
+        que o nome seja entrado todo em minúsculas. Exemplos:
+        
+        • Rodolfo Migon Favaretto => RMF
+        • Gléderson Lessa dos Santos => GLS
+        • Fulana de Tal => FT   
+
+        var nome = prompt("Informe um nome completo")
+
+        
+        sobrenome(nome)
+
+        function sobrenome(nomecompleto) {
+            nomecompleto = nomecompleto.replace(/\s(de|da|dos|das)\s/g, ' '); // Remove os de,da, dos,das.
+            var iniciais = nomecompleto.match(/\b(\w)/gi); // Iniciais de cada parte do nome.
+            var nome = nomecompleto.split(' ')[0].toLowerCase(); // Primeiro nome.
+            var sobrenomes = iniciais.splice(1, iniciais.length - 1).join('').toUpperCase(); // Iniciais
+            alert(sobrenomes)
+        }
+
+
+        /* 7 -Faça um programa que, a partir de um texto digitado pelo usuário, conte o
+        número de caracteres total e o número de palavras (palavra é definida por
+        qualquer sequência de caracteres delimitada por espaços em branco) e
+        exiba o resultado
+
+        var texto = prompt("escreva um texto")
+        var caracteres = texto.replace(/\s/g, '');
+        var palavras = texto.split(' ').length;
+
+        alert(caracteres.length)
+        alert(palavras)
+
+        8 - Data por extenso. Faça um programa que solicite a data de nascimento
+        (dd/mm/aaaa) do usuário e imprima a data com o nome do mês por extenso.
+        Exemplo:
+        Data de Nascimento: 13/04/1988
+        Você nasceu no dia 13 de abril de 1988
+
+        var aniversario = "04/13/1988"
+        var data = new Date(aniversario)
+        var dia = data.getDate()
+        var mes = data.getMonth()
+        var ano = data.getFullYear()
+
+        alert(`Você nasceu no dia ${dia} de ${mes} de ${ano}`)
+
+            9 - Dados uma frase e uma palavra, escreva um programa que verifique o
+            número de vezes que a palavra ocorre na frase
+        
+        Exemplo
+        Na frase “ANA E MARIANA GOSTAM DE BANANA”, a palavra ANA
+        ocorre 4 vezes*/
+
+        const str = "Este é o meu texto que contém a palavra texto";
+        const teste = "texto"
+
+        var regex = new RegExp(teste, 'g')
+        const ocorrencias = (str.match(regex) || []).length;
+
+        alert(ocorrencias);
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

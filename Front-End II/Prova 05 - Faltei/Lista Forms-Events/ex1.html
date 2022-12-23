@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <title>Cadastro de alunos</title>
+    </head>
+    <body>
+        <form id="form">
+            <input type="text" id="nome"><br>
+            <input type="number" id="nota"><br>
+            <input type="button" id="enviar" value="processar">
+        </form>
+        <script>
+            document.querySelector("#enviar").addEventListener("click", escreve);
+            function escreve() {
+                var div = document.createElement("div");
+                var scan = document.createElement("scan")
+                var body = document.body
+                let nome  = document.getElementById("nome").value;
+                let nota = Number(document.getElementById("nota").value);
+
+                if(nota < 10 && nota > 0){
+                    scan.innerHTML = nota
+                    if(nota < 6){
+                        scan.style.color = 'red'
+                    }else{
+                        scan.style.color = 'green'
+                    }
+                    div.appendChild(scan)
+                    div.innerHTML = nome +" "+ div.innerHTML
+                    body.appendChild(div)
+                }
+            }
+        </script>
+    </body>
+</html>

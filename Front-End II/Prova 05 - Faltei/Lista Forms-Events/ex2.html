@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Roleta</title>
+</head>
+<body>
+    <div id="numero"></div>
+    <form id="form">
+        <input type="button" id="parar" value="PARAR">
+    </form>
+    <script>
+        var timer, numero;
+
+        addEventListener("load",function () {
+            for (let i = 0; i < 10; i++) {
+                let input = document.createElement("input")
+                input.setAttribute("type", "text")
+                input.setAttribute("id", i)
+                let br = document.createElement("br")
+                document.getElementById("form").appendChild(br)
+                document.getElementById("form").appendChild(input)
+            }
+            timer = setInterval(function () {
+                numero = Math.floor(Math.random() * 10);
+                document.getElementById("numero").innerHTML = numero
+            },100)
+        })
+
+        document.querySelector("#parar").addEventListener("click",parar);
+        function parar() {
+            clearInterval(timer);
+            var nome = document.getElementById(numero).value;
+            if(nome == ""){
+                alert("A banca venceu!")
+            }else{
+                alert("Parabéns "+nome+", você venceu!")
+            }
+        }
+    </script>
+</body>
+</html>

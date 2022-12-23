@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		@import "https://fonts.googleapis.com/css?family=Muli|Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic&subset=latin,cyrillic";
+
+		* {
+			margin:0;
+			padding:0;
+			border:0;
+			list-style:none;
+			vertical-align:baseline;
+		}
+
+		body {
+		  font-family: 'RobotoDraft', 'Roboto', 'Helvetica Neue, Helvetica, Arial', sans-serif;
+		  font-style: normal;
+		  font-weight: 300;
+		  font-size: 0.9rem;
+		  letter-spacing: 0.01rem;
+		  color: #212121;
+		  background-color: #e7e7e7;
+		}
+
+		h2{
+			text-align: center;
+			font-weight: 500;
+			font-size: 1.1rem;
+			margin-bottom: 0.8rem;
+		}
+
+		table{
+			width:150px;
+			margin:0 auto;
+			font-family: 'Muli';
+			text-align:center;
+			margin-bottom: 0;
+			background-color: #ffffff;
+			border-color: #e5e5e5;
+			border:0;
+			border-collapse:collapse;
+		}
+		
+		td{
+			width:50px;
+			height:50px;
+			padding:0;
+			margin:0;
+			font-size:36px;
+			text-align: center;
+		}
+
+		tr:nth-of-type(even){
+			border-top: 1px solid #e5e5e5;
+			border-bottom: 1px solid #e5e5e5;
+		}
+
+		td:nth-of-type(even){
+			border-left: 1px solid #e5e5e5;
+			border-right: 1px solid #e5e5e5;
+		}
+		input{
+			width: 30px;
+			height: 30px;
+			text-align: center;
+		}
+		button{
+			width: 50px;
+			height: 30px;
+			text-align: center;
+			font-weight: bold;
+		}
+		td:hover{
+			background-color: lightblue;
+			transition: .3s;
+		}
+	</style>
+</head>
+<body>
+	<h2>Jogo da Velha</h2>
+	<table>
+		<tbody id="jogo">
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		</tbody>
+	</table>
+
+	<script>
+
+		const tabuleiro = document.querySelector('#jogo')
+		let jogada = 0
+		tabuleiro.addEventListener('click', function(event){
+			let clickedElement = event.target
+			if(jogada%2===0){
+				clickedElement.innerHTML = 'X'
+				jogada++
+			} else {
+				clickedElement.innerHTML = 'O'
+				jogada++
+			}
+		})
+
+	</script>
+</body>
+</html>

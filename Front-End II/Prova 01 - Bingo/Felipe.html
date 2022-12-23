@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="pt-br">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bingo</title>
+    <style>
+        body{
+            background-color: rgb(24, 24, 24);
+            color: azure;
+            padding: 40px;
+            display: flex;
+            flex-flow: column wrap;
+            align-items: center;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        button{
+            width: 200px;
+            height: 50px;
+            background-color: rgb(101, 211, 248);
+            font-weight: bold;
+            font-size: 2em;
+            color: black;
+            box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.219);
+        }
+    </style>
+</head>
+<body id="body">
+    <div id="div1"></div>
+    <button onclick="bingo()">Bingo!</button>
+    <h2 id="bingoPrint">Sorteando...</h3>
+    
+    <ul id="ul">      
+    </ul>
+    
+    <script>
+        var count=0
+        function createEvent(){
+            setTimeout(sorteia,1000)
+        }
+        
+        function sorteia(){
+            let bingoPrint = document.querySelector('#bingoPrint')
+            let ul = document.querySelector('#ul')
+            let li = document.querySelectorAll('li')
+            
+            
+            num = Math.floor(Math.random()*99)
+            bingoPrint.innerHTML = num 
+            let newLi = document.createElement('li')
+            newLi.innerHTML = num
+            // for(let i=0; i<li.length; i++){
+            //     if(li[i].innerText.includes(num)!=-1){
+            //         console.log("deu")
+            //     }
+            // }
+            ul.appendChild(newLi)
+            if(count==39){
+                bingo()
+            }
+            count++
+                                    
+                createEvent()
+        }
+        
+        function bingo(){
+            //window.removeEventListener(createEvent, setTimeout)
+            let ul = document.querySelector('#ul')
+            let body = document.querySelector('body')
+            body.innerHTML='<h1>BINGO!</h1>' + `${ul.lastChild.innerHTML}`
+        }
+        
+        window.addEventListener("load",createEvent)
+
+</script>
+</body>
+</html>

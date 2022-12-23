@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulado para Prova</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <div id="mostra"></div>
+    <button id="iniciar">Iniciar</button>
+    <div id="bingo"></div>
+
+    <ul id="ul">
+
+    </ul>
+
+
+    <script>
+        var iniciar = document.getElementById("iniciar");
+        iniciar.addEventListener("click", sorteia);
+
+        var ul = document.getElementById("ul")
+
+        var li = document.createElement("li");
+
+        var sorteados = [];
+
+
+        function sorteia() {
+
+            var aleatorio = Math.floor(Math.random() * 89) + 1;
+            verifica(aleatorio);
+
+        }
+
+
+        function verifica(valor) {
+            var cont = 0
+
+            if (sorteados.length <= 40) {
+
+                if (sorteados.length == 0) {
+                    sorteados.push(valor);
+                    var li = document.createElement("li");
+                    li.innerHTML = valor;
+                    ul.appendChild(li);
+                    var mostra = document.getElementById("mostra")
+                    mostra.innerHTML = valor;
+                }
+
+                else {
+                    for (let i = 0; i < sorteados.length; i++) {
+                        if (sorteados[i] == valor) {
+                            cont++
+                        }
+                    }
+
+                    if (cont > 0) {
+                        sorteia()
+                    }
+
+                    else {
+                        sorteados.push(valor)
+                        var li = document.createElement("li");
+                        li.innerHTML = valor;
+                        ul.appendChild(li);
+                        var mostra = document.getElementById("mostra")
+                        mostra.innerHTML = valor;
+                    }
+                }
+
+
+            }
+
+            else {
+                bingo()
+            }
+        }
+
+        function bingo() {
+            var mostra = document.getElementById("mostra")
+            mostra.innerHTML = "BINGO";
+        }
+
+    </script>
+</body>
+
+</html>

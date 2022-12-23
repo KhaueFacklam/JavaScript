@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>ESTUDO PROVA</title>
+</head>
+
+<body>
+    <h3>QUESTÃO 2</h3>
+    <input id="nome" type="text" placeholder="nome">
+    <input id="sobrenome" type="text" placeholder="sobrenome">
+    <button id="botao">Saudação</button>
+    <br><br>
+
+
+    <h3>QUESTÃO 3</h3>
+    <img id="lampada" src="img/apagado.jpg">
+    <br><br>
+
+
+    <h3>QUESTÃO 4</h3>
+    <button id="verde">Verde</button>
+    <button id="amarelo">Amarelo</button>
+    <button id="vermelho">Vermelho</button>
+    <br><br>
+
+
+    <h3>QUESTÃO 5</h3>
+    <input id="quantia" type="number" placeholder="informe a quantia que possui">
+    <button id="calcular">Calcular</button>
+    <p id="resultado"></p>
+
+
+    <script>
+
+          1 - Solicite 2 notas de um aluno (valores entre 0 e 10) com o prompt. A seguir, 
+        calcule a média do aluno, sabendo que a nota 1 tem peso 3.5 e a nota 2 tem 
+        peso 6.5. Considerando que a média para aprovação é 7.0, mostre com um 
+        alert as 2 notas, a média e se o aluno está aprovado ou reprovado.
+
+        var nota1 = prompt("Informe primeira nota de 0 a 10")
+        var nota2 = prompt("Informe segunda nota de 0 a 10")
+        var peso1 = (nota1 * 3.5)
+        var peso2 = (nota2 * 6.5)
+        var media = (peso1 + peso2) / 10
+
+        if (media < 7) {
+            alert(`Nota 1: ${nota1} Nota 2: ${nota2} Media: ${media} - REPROVADO`)
+        }
+
+        else {
+            alert(`Nota 1: ${nota1} Nota 2: ${nota2} Media: ${media} - APROVADO`)
+        }
+
+
+
+         2 - Faça um programa que solicita a idade e peso do paciente  com o prompt. 
+        Calcule a dosagem de um determinado medicamento e mostre a receita em 
+        um alert informando quantos mg do medicamento o paciente deve tomar por 
+        dose.
+
+        var idade = prompt("Informe tua idade")
+        var peso = prompt("Informe teu peso")
+        var remedio = "Aspirina"
+
+        if (idade > 12) {
+            if (peso >= 60) {
+                alert(`Tomar 1000 mg de ${remedio}`)
+            }
+            else{
+                alert(`Tomar 875 mg ${remedio}`)
+            }
+        }
+        else{
+            if (peso >= 5 &&  peso <= 9) {
+                alert(`Tomar 125 mg ${remedio}`)
+            }
+            if (peso > 9 &&  peso <= 16) {
+                alert(`Tomar 250 mg ${remedio}`)
+            }
+            if (peso > 16 &&  peso <= 24) {
+                alert(`Tomar 375 mg ${remedio}`)
+            }
+            if (peso > 24 &&  peso <= 30) {
+                alert(`Tomar 500 mg ${remedio}`)
+            }
+            if (peso > 30) {
+                alert(`Tomar 750 mg ${remedio}`)
+            }
+        }
+
+        3 - Escreva  um  programa  que  leia  quatro  valores  referentes  a  quatro  notas 
+        escolares de um aluno e exibir um alerta dizendo que o aluno foi aprovado, 
+        se o valor da média aritmética for maior ou igual a 7. Se o valor da média for 
+        menor do que 7, ler a nota de exame, somar com o valor da média e obter a 
+        nova média, dividindo por 2. Se a nova média for maior ou igual a 5,  gerar 
+        um alerta dizendo que o aluno foi aprovado em exame. Se o aluno não foi 
+        aprovado,  mostrar  uma  mensagem  informando  esta  condição.  Apresentar 
+        com as mensagens o valor da média do aluno, para qualquer condição.
+
+
+        let valor1 = prompt("Nota 1")
+        let valor2 = prompt("Nota 2")
+        let valor3 = prompt("Nota 3")
+        let valor4 = prompt("Nota 4")
+        let soma = Number(valor1) + Number(valor2) + Number(valor3) + Number(valor4)
+        let media = soma / 4;
+
+        if (media >= 7) {
+            alert(`Aluno aprovado com média: ${media}`)
+        }
+
+        if (media < 7) {
+            let exame = prompt("Informe a nota do exame")
+            novaNota = Number(media) + Number(exame)
+            media = novaNota / 2
+
+            if (media >= 5) {
+                alert(`Aluno aprovado com média: ${media}`)
+            }
+            else {
+                alert(`Aluno reprovado com média: ${media}`)
+            }
+        }
+
+        /*  Crie um programa que, utilizando um laço for, cria um menu com a estrutura 
+        ul li. Esse menu terá cinco itens, chamados item 1, item 2, item 3, item 4 e 
+        item 5 e esses itens direcionarão para as páginas: pagina1.htm, 
+        pagina2.htm, pagina3.html, pagina4.htm e pagina5.htm*/
+
+        var ul = document.createElement("ul")
+        document.body.appendChild(ul)
+
+        for (var i = 0; i < 5; i++) {
+            var li = document.createElement("li")
+            var a = document.createElement("a")
+
+            a.innerHTML = `Item ${i + 1}`
+            a.href = `pagina${i + 1}.htm`;
+
+            ul.appendChild(li)
+            li.appendChild(a)
+        }
+
+        /* 5 - Crie um programa que solicita um número pelo prompt de comando e retorna
+        o fatorial do mesmo em um alert */
+
+        var valor = prompt("Informe um valor")
+
+        for (var fat = 1; valor > 1; valor--) {
+            fat = fat * valor
+        }
+        
+        alert(fat)
+
+        6 - Utilizando o do/while,  crie  um  programa  que  solicita  um  valor  para  o 
+        usuário até que este digite um valor positivo (Em caso de números negativos 
+        e zero ele deverá solicitar novamente o número)
+
+        do {
+            var valor = prompt("Informe um valor positivo")
+        } while (valor <= 0)    
+
+        7 - Escreva  um  programa  que  solicita  um  número  positivo.  Após,  deve  ser 
+        apresentada  o  somatório  desse  número  (soma  dos  números  de  0  até  o 
+        número repassado) 
+
+        do {
+
+            var valor = prompt("Informe um valor positivo")
+            valor = Number(valor)
+
+            if (valor >= 0) {
+
+                var cont = Number(valor)
+
+                for (var i = 1; i <= cont; i++) {
+                    valor = valor + i
+                }
+
+                alert(`Resultado: ${valor}`)
+            }
+
+        } while (valor < 0)
+
+        8 - Faça um programa que solicita a altura (m) e o peso (kg) do paciente. Calcule 
+        o IMC: peso / (altura * altura) e mostre a classificação e o risco para a saúde 
+        de acordo com o valor calculado, com base na tabela abaixo 
+
+        var altura = prompt("Informe tua altura")
+        var peso = prompt("Informe teu peso")
+
+        var IMC = peso / (altura * altura)
+
+        if (IMC < 18.5) {
+            alert(`Abaixo do peso`)
+        }
+        if (IMC >= 18.5 && IMC < 25) {
+            alert(`Peso ideal`)
+        }
+        if (IMC >= 25 && IMC < 30) {
+            alert(`Excesso de peso`)
+        }
+        if (IMC >= 30 && IMC < 35) {
+            alert(`Obesidade grau 1`)
+        }
+        if (IMC >= 35 && IMC < 40) {
+            alert(`Obesidade grau 2`)
+        }
+        if (IMC >= 40) {
+            alert(`Obesidade grau 3`)
+        }
+
+        9 - Gere um número aleatório N entre 0 e 10 com a função random. Através de 
+        prompt  box  você  deverá  tentar  adivinhar  o  número  gerado.  Você  terá  3 
+        tentativas para tentar acertar o número. Caso não consiga em 3 tentativas, 
+        exibir um alerta com o número gerado. 
+        N = Math.floor(10 * Math.random())/*
+
+        var N = Math.floor(10 * Math.random())
+
+        tentativa = prompt("Tente acertar o número:")
+        if (tentativa == N) {
+            alert("Você acertou")
+
+        }
+
+        tentativa = prompt("Tente acertar o número:")
+        if (tentativa == N) {
+            alert("Você acertou")
+        }
+
+        tentativa = prompt("Tente acertar o número:")
+        if (tentativa == N) {
+            alert("Você acertou")
+        }
+
+        else {
+            alert(`Errou! O número era ${N}`)
+        }
+
+        10 - Altere o exercício anterior para gerar um número aleatório N entre 0 e 100.
+        Através de prompt box você deverá tentar adivinhar o número gerado, até
+        acertá-lo. A cada tentativa incorreta, você deverá informar se o número é
+        maior ou menor que o chute*/
+
+        var N = Math.floor(100 * Math.random())
+        var tentativa = -1
+
+        while (tentativa != N) {
+
+            tentativa = prompt("Qual o número?")
+                        
+            if (tentativa > N) {
+                alert(`Errou! Tente um numero menor`)
+            }
+            
+            if (tentativa < N) {
+                alert(`Errou! Tente um numero maior`)
+            }
+
+            if (tentativa == N) {
+                alert(`Acertou! O número era ${N}`)
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

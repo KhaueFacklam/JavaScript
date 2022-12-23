@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h1 id="h1Clicavel">Clique aqui ou</h1>
+	<p id="pClicavel">clique aqui</p>
+	<script>
+		function h1Ola(){
+			alert("Olá, eu sou o h1");
+		}
+		var h1click = document.getElementById("h1Clicavel");
+		h1click.addEventListener("click",h1Ola);
+		document.getElementById("pClicavel").addEventListener("click", function(){
+			alert("Olá, eu sou o p");
+		});
+	</script>
+</body>
+</html>

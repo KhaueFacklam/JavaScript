@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>prova Dois</title>
+  </head>
+  <body>
+    <h1 id="h1">PREPARAR!</h1>
+    <img src="gunman.png" alt="" id="image" />
+
+    <script>
+      window.addEventListener("load", começar);
+
+      function começar() {
+        var tempo = setTimeout(chama, 5000);
+        var contador = setTimeout(morreu, 7000);
+
+        function chama() {
+          var image = document.getElementById("image");
+          var h1 = document.getElementById("h1");
+          h1.innerText = "Atire";
+
+          image.addEventListener("click", atirar);
+
+          if (tempo < 2000) {
+          } else {
+            h1.innerText = "Você está morto!!";
+            image.src = "fire.png";
+          }
+        }
+
+        function atirar() {
+          h1.innerText = "VENCEDOR!";
+          image.src = "dead.png";
+          image.removeEventListener("click", atirar);
+          clearTimeout(contador);
+        }
+      }
+
+      function morreu() {
+        h1.innerText = "Você está morto!!";
+        image.src = "fire.png";
+        image.removeEventListener("click", atirar);
+      }
+    </script>
+  </body>
+</html>

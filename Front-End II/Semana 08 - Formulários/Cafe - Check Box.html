@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Exemplo 1</title>
+		<script type="text/javascript">
+			function pedido(){
+				// guarda as referencias para os objetos
+				var c = document.forms[0].cafe
+				var r = document.forms[0].resposta
+				var txt = ""
+				
+				// Cafe é um array pois existem dois botões com o mesmo nome
+				for(i = 0; i<c.length; ++i){
+					if (c[i].checked) {
+						txt = txt + c[i].value + " "
+					}
+				}
+				
+				// Escreve a resposta
+				if(txt == "")
+					r.value = "Você pediu um café simples"
+				else
+					r.value = "Você pediu um café com: " + txt
+			}
+		</script>
+	</head>
+	<body>
+		<form>
+			Como você vai querer o seu café ?<br>
+			<input type="checkbox" name="cafe" value="creme">Com creme<br>
+			<input type="checkbox" name="cafe" value="açúcar">Com açúcar<br>
+			<input type="text" name="resposta" size="40"><br>
+			<input type="button" onclick="pedido()" value="Fazer o pedido">
+		</form>
+	</body>
+</body>
+</html>

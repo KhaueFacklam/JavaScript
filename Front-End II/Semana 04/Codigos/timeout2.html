@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+	function Despertador(_tempo){
+		setTimeout(function(){
+			var audio = new Audio('alarme.mp3');
+			audio.play();			
+		},_tempo);
+	}
+		function createEvents(){
+			document.getElementById('alarme').addEventListener("click",Despertador(10000));
+		}
+		window.addEventListener("load",createEvents);
+	</script>
+</head>
+<body>
+<button id="alarme"> Habilitar alarme</button>
+</body>
+</html>

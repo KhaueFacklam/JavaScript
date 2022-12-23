@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+</head>
+<body>
+    <button id="btnApagar">Apagar paragrafo</button>
+    <button id="btnDesabilita">Desabilita</button>
+    <button id="qualBotao">Qual botão</button>
+    <p id="pApagavel">Clique no botão</p>
+
+    <div id="d1">
+		<p id="p1">Um elemento clicavel com propagação</p>
+		<p id="p2">Um elemento clicavel sem propagação</p> 
+    </div> 
+    <p>Arraste a barra</p>
+    <div id="barra" style="background-color: orange; height: 20px; width: 50px;"></div>   
+    <script>
+        function apagar(){
+            pApagavel.style.display = 'none'
+        }       
+        function desabilita(){
+            document.querySelector('#btnApagar').removeEventListener('mousedown', apagar)
+        }
+        var btnApagar = document.querySelector('#btnApagar').addEventListener('mousedown', apagar);
+        var pApagavel = document.querySelector('#pApagavel');
+        var btnDesabilita = document.querySelector('#btnDesabilita').addEventListener('click', desabilita);
+        var qualBotao = document.querySelector('#qualBotao').addEventListener('mousedown', function(event){
+            if(event.which==1){
+                alert('Botão esquerdo.')
+            }
+            else if(event.which==2){
+                alert('Botão central.')
+            }
+            else if(event.which==3){
+                alert('Botão direito.')
+            }
+        })
+        addEventListener('keydown', function(event){
+            console.log(event.keyCode)
+            event.charCode
+            if(event.keyCode==66){
+                document.body.style.backgroundColor = '#0000ff'
+            }
+            else if(event.keyCode==82){
+                document.body.style.backgroundColor = '#ff0000'
+            }
+            else if(event.keyCode==71){
+                document.body.style.backgroundColor = '#00ff00'
+            }
+            else{
+                document.body.style.backgroundColor = '#ffffff'
+            }
+        })
+        //EVENT.STOPPROPAGATION()
+        document.getElementById("p1").addEventListener("click", function(event) {
+			console.log(this);
+		});
+		document.getElementById("p2").addEventListener("click", function(event) {
+			console.log(this);
+			event.stopPropagation();
+		});
+		document.getElementById("d1").addEventListener("click", function(event) {
+			console.log(this);
+		});
+        //ARRASTA BARRA
+        var lastX
+        var rect = document.querySelector('#barra')
+        rect.addEventListener('mousedown', function(event){
+            if(event.which==1){
+                lastX = event.pageX
+                addEventListener("mousemove", moved)
+                event.preventDefault()
+            }
+        })    
+        function moved(event){
+            var dist = event.pageX - lastX
+            var newWidth = Math.max(10, rect.offsetWidth + dist)
+            rect.style.width = newWidth + "px"
+            lastX = event.pageX
+        }    
+        rect.addEventListener('mouseup', function(event){
+            removeEventListener('mousemove', moved)
+        })
+
+    </script>
+</body>
+</html>

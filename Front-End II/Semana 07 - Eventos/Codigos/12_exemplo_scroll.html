@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+	<style>
+		.progress {
+		  border: 1px solid blue;
+		  width: 100px;
+		  position: fixed;
+		  top: 10px; right: 10px;
+		}
+		.progress > div {
+		  height: 12px;
+		  background: blue;
+		  width: 0%;
+		}
+		body {
+	    height: 2000px;
+	  }
+	</style>
+	<body>
+		<div class="progress"><div></div></div>
+		<p>Scroll me...</p>	
+		<script>
+			var bar = document.querySelector(".progress div");
+			addEventListener("scroll", function() {
+			  var max = document.body.scrollHeight - innerHeight;
+			  console.log(innerHeight);
+			  console.log(document.body.scrollHeight);
+			  //innerHeright é uma variavel global de window que mostra a altura da janela da área visível da janela
+			  var percent = (pageYOffset / max) * 100;
+			  //pageYOffset mostra a posição corrente do scroll
+			  bar.style.width = percent + "%";
+			});
+		</script>
+	</body>
+</html>

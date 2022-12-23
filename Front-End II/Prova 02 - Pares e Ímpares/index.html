@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="container"></div>
+    <button id="pronto">PRONTO</button>
+    <p id="pares"></p>
+    <p id="impares"></p>
+
+
+
+
+
+    <script>
+        var vetor = []
+
+
+        do {
+            var valor = prompt("Informe um valor inteiro maior que 1")
+        } while (valor < 1)
+
+        var tamanho = valor - 0
+
+        //   alert(tamanho)
+
+        for (var i = 0; i < 20; i++) {
+            do {
+                vetor[i] = Math.floor(Math.random() * tamanho)
+            } while (vetor[i] == 0)
+        }
+
+        criaLink()
+
+        function criaLink() {
+            var container = document.querySelector("#container")
+            for (var j = 0; j < 20; j++) {
+                var div = document.createElement("div")
+                div.innerText = vetor[j]
+                div.classList.toggle("borda");
+                container.appendChild(div)
+            }
+        }
+
+        container.addEventListener("click", troca)
+
+        i = 1
+        j = 1
+
+        function troca(event) {
+            const elementoClicado = event.target
+
+            if (elementoClicado.innerText % 2 === 0) {
+                elementoClicado.style.color = "white"
+                elementoClicado.style.backgroundColor = "green"
+                var par = document.querySelector("#pares")
+                par.innerHTML = (`Pares: ${i}`)
+                i++
+
+
+            }
+            else {
+                elementoClicado.style.color = "white"
+                elementoClicado.style.backgroundColor = "red"
+                var impares = document.querySelector("#impares")
+                impares.innerHTML = (`Impares: ${j}`)
+                j++
+
+
+            }
+        }
+
+        var pronto = document.querySelector("#pronto")
+        pronto.addEventListener("click", imprimi)
+
+        function imprimi() {
+            container.removeEventListener("click", troca)
+            var div = document.querySelectorAll("div")
+            for (var i = 0; i < 20; i++) {
+                if (div[i].innerText % 2 == 0 && div[i].style.color != "white") {
+                    div[i].style.backgroundColor = "#ff0"
+                }
+            }
+        }
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

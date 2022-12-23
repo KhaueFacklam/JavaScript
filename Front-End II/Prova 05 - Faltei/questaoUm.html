@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>questão um</title>
+</head>
+
+<body>
+
+    <h2>Cadastrar</h2>
+    Login <input type="text" id="loginCadastro">
+    Senha <input type="text" id="senhaCadastro">
+    <button id="cadastro">OK</button>
+    <h2>Entrar</h2>
+    Login <input type="text" id="loginEntrar">
+    Senha <input type="text" id="senhaEntrar">
+    <button id="login">OK</button>
+
+
+    <script>
+        var usuarios = [];
+        var senhas = [];
+
+        var cadastro = document.getElementById("cadastro")
+        cadastro.addEventListener("click", cadastrar)
+
+        var login = document.getElementById("login")
+        login.addEventListener("click", logar)
+
+        function cadastrar() {
+            var loginCadastro = document.getElementById("loginCadastro").value
+            var senhaCadastro = document.getElementById("senhaCadastro").value
+
+            var loginTamanho = loginCadastro.length;
+            var senhaTamanho = senhaCadastro.length;
+
+
+            if (loginCadastro == 0 || senhaCadastro == 0) {
+                alert("Preencha todos os campos");
+            } else if (loginTamanho < 5) {
+                alert("Usuario precisa ter no minimo 5 caracteres");
+            } else if (senhaTamanho < 4) {
+                alert("Senha precisa ter no minimo 4 caracteres");
+            } else {
+                usuarios.push(loginCadastro)
+                senhas.push(senhaCadastro)
+            }
+        }
+
+        function logar() {
+            var index = 0
+
+            var loginEntrar = document.getElementById("loginEntrar").value
+            var senhaEntrar = document.getElementById("senhaEntrar").value
+
+
+            if (usuarios.includes(loginEntrar)) {
+                index = usuarios.indexOf(loginEntrar);
+
+                if (senhaEntrar == senhas[index]) {
+                    alert("Login Realizado");
+                } else {
+                    alert("Senha errada");
+                }
+            } else {
+                alert("Usuário não encontrado");
+            }
+        }
+
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

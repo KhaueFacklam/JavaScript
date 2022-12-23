@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Nodos HTML</title>
+    <style>
+      .callout {
+        border: solid 1px #ff0080;
+        margin: 2px 4px;
+        padding: 2px 6px;
+      }
+      .code {
+        background: #ccc;
+        margin: 1px 2px;
+        padding: 1px 4px;
+        font-family: monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Exemplo de varredura de nodos HTML</h1>
+    </header>
+    <main id="content">
+      <p>Este é um <i>simples</i> arquivo HTML.</p> 
+      <section class="callout">
+        <p>Note que a estrutura em árvore é capaz de representar corretamente uma estrutura de documento html</p>
+      </section>
+      <h2>Relembrando que:</h2>
+      <p>IDs (como <span class="code">#content</span>) são únicos (existe apenas 1 por página).</p>
+      <p>Classes (como <span class="code">.callout</span>) podem ser usadas em quantos elementos desejarmos</p>
+      <div id="callout2" class="callout fancy">
+        <p>Um elemento HTML pode ter múltiplas classes</p>
+      </div>
+    </main>
+    <script>
+      (function printDOM(node, prefix) { 
+        console.log(prefix + node.nodeName + "-"+node.nodeType);
+        for(var i=0; i<node.childNodes.length; i++) {
+            printDOM(node.childNodes[i], prefix + '\t');
+        }
+      })(document,'');
+    </script>
+  </body>
+</html>
