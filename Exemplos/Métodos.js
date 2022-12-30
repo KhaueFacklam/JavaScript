@@ -3,7 +3,7 @@
 charAt(); // Retorna um caractere específico
 var texto = `Olá, Mundo`;
 var letra1 = texto.charAt(0);
-var letra2 = texto.charAt(text.length - 2);
+var letra2 = texto.charAt(texto.length - 2);
 
 // =========================================================================
 
