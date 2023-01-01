@@ -4,14 +4,52 @@ var table = [];
 
 const player1 = new Player('player1', [], []);
 const player2 = new Player('player2', [], []);
+//Obj PLAYER
+function Player(name, hand, pile) {
+  this.name = name;
+  this.hand = hand;
+  this.pile = pile;
+}
+
+var currentPlayer = player1;
+var lastPlayer = player2;
+var currentTurn = 0;
 
 //DOM
 //Dropzones
-const dropZones = document.querySelectorAll(".dropZone");
-dropZones.forEach((dropZone) => {
-  dropZone.addEventListener("dragover", dragover);
-  dropZone.addEventListener("drop", drop);
-});
+function getDropZones(){
+  var dropZones = document.querySelectorAll(".dropZone");
+  dropZones.forEach((dropZone) => {
+    dropZone.addEventListener("dragover", dragover);
+    dropZone.addEventListener("drop", drop);
+  });
+  if (currentPlayer.name == 'player1') {
+    if (lastPlayer.pile.length == 0) {
+      dropZones[0].removeEventListener("dragover", dragover);
+      dropZones[0].removeEventListener("dragover", dragover);
+      dropZones[2].removeEventListener("dragover", dragover);
+      dropZones[2].removeEventListener("dragover", dragover);
+    }else {
+      dropZones[2].removeEventListener("dragover", dragover);
+      dropZones[2].removeEventListener("dragover", dragover);
+      dropZones[0].addEventListener("dragover", dragover);
+      dropZones[0].addEventListener("drop", drop);
+    }
+  }
+  if (currentPlayer.name == 'player2') {
+    if (lastPlayer.pile.length == 0) {
+      dropZones[2].removeEventListener("dragover", dragover);
+      dropZones[2].removeEventListener("dragover", dragover);
+      dropZones[0].removeEventListener("dragover", dragover);
+      dropZones[0].removeEventListener("dragover", dragover);
+    }else {
+      dropZones[0].removeEventListener("dragover", dragover);
+      dropZones[0].removeEventListener("dragover", dragover);
+      dropZones[2].addEventListener("dragover", dragover);
+      dropZones[2].addEventListener("drop", drop);
+    }
+  }
+} 
 function dragover(e) {
   e.preventDefault();
   const cardImgBeingDragged = document.querySelector(".is-dragging");
@@ -68,7 +106,7 @@ function dragend() {
 //DA A MESA
 function setTable() {
   if (table.length == 0) {
-    for (let index = 0; index < 10; index++) {
+    for (let index = 0; index < 4; index++) {
       let card = deck.cards.pop();
       table.push(card);
     }
@@ -81,7 +119,7 @@ function setTable() {
 //DA AS MAOS
 function setHand() {
   if (player1.hand.length == 0) {
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 3; i++) {
       let card = deck.cards.pop();
       player1.hand.push(card);
     }
@@ -89,7 +127,7 @@ function setHand() {
     console.log(`Player1 com cartas`);
   }
   if (player2.hand.length == 0) {
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 3; i++) {
       let card = deck.cards.pop();
       player2.hand.push(card);
     }
@@ -159,36 +197,7 @@ function verifica(value, handCard, dropZone) {
   changeTurn();
 }
 
-
-
-/*play(){
-  
-  //OPÇÕES DE AÇÃO DO JOGADOR
-  pegarDaMesa()
-  roubarMonte()
-  descartarNaMesa()
-  
-}*/
-
-//FUNÇÕES PARA RENDER
-//renderPile1()
-//renderHand1()
-//renderMesa()
-//renderPile2()
-//renderHand2()
-
-// const renderMesa = async () => {
-//   let cards = await listingPile('mesa')
-//   let table = document.querySelector("#table");
-//   cards.mesa.cards.map(card => {
-//     let cardImg = document.createElement("img");
-//     cardImg.src = card.image;
-//     cardImg.classList.add('cardImg')
-//     table.appendChild(cardImg);
-//   });
-//   getCardsImg()
-// }
-
+//RENDERS
 function renderHand() {
   let hand1 = document.querySelector("#hand1");
   player1.hand.map((card) => {
@@ -221,20 +230,6 @@ function renderTable() {
 }
 
 function renderPile(dropZone) {
-    // let pileDom1 = document.querySelector("#pile1");
-    //   let pileDom2 = document.querySelector("#pile2");
-    //   if (currentPlayer.name == 'player1') {
-    //     while (pileDom2.firstChild) {
-    //       pileDom2.removeChild(pileDom2.firstChild);
-    //           console.log('1');
-    //     }
-    //   }
-    //   if (currentPlayer.name == 'player2') {
-    //     while (pileDom1.firstChild) {
-    //       pileDom1.removeChild(pileDom1.firstChild);
-    //           console.log('2');
-    //     }
-    // }
   let pileDomCurrent;//player2.pile
   let mesa = document.querySelector("#table");
   let pileDom1 = document.querySelector("#pile1");
@@ -252,7 +247,6 @@ function renderPile(dropZone) {
     }
   }
   if(dropZone == pileDom1 || dropZone == pileDom2){ 
-    console.log('entrou');
     while (pileDom1.firstChild) {
       pileDom1.removeChild(pileDom1.firstChild);
     }
@@ -270,17 +264,9 @@ function renderPile(dropZone) {
 }
 
 getDeckId();
+getDropZones();
 
-//Obj PLAYER
-function Player(name, hand, pile) {
-  this.name = name;
-  this.hand = hand;
-  this.pile = pile;
-}
 
-var currentPlayer = player1;
-var lastPlayer = player2;
-var currentTurn = 0;
 
 function changeTurn(){
     if (currentTurn == 0) {
@@ -292,16 +278,24 @@ function changeTurn(){
         lastPlayer = player2
         currentTurn = 0
     }
-}
+    getDropZones();
+    if (currentPlayer.hand.length == 0 && lastPlayer.hand.length == 0) {
+      setHand()
+    }
+    if (table.length == 0) {
+      setTable()
+    }
+    console.log(deck.cards.length);
+    if (deck.cards.length == 0) {
+      if (player1.pile.length > player2.pile.length) {
+        alert('Player 1 VENCEU!')
+      }
+      if (player1.pile.length < player2.pile.length) {
+        alert('Player 2 VENCEU!')
+      }
+      else {
+        alert('Os burros empataram!')
 
-// let pileDom1 = document.querySelector("#pile1");
-//   let pileDom2 = document.querySelector("#pile2");
-//   if (currentPlayer.name == 'player1') {
-//     while (pileDom2.firstChild) {
-//       pileDom2.removeChild(pileDom2.firstChild);
-//           console.log('cuwhile');
-//       }
-//   }
-//   if (currentPlayer.name == 'player2') {
-    
-//   }
+      }
+    }
+}
