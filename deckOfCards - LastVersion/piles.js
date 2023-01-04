@@ -26,12 +26,12 @@ function getDropZones(){
   if (currentPlayer.name == 'player1') {
     if (lastPlayer.pile.length == 0) {
       dropZones[0].removeEventListener("dragover", dragover);
-      dropZones[0].removeEventListener("dragover", dragover);
+      dropZones[0].removeEventListener("drop", drop);
       dropZones[2].removeEventListener("dragover", dragover);
-      dropZones[2].removeEventListener("dragover", dragover);
+      dropZones[2].removeEventListener("drop", drop);
     }else {
       dropZones[2].removeEventListener("dragover", dragover);
-      dropZones[2].removeEventListener("dragover", dragover);
+      dropZones[2].removeEventListener("drop", drop);
       dropZones[0].addEventListener("dragover", dragover);
       dropZones[0].addEventListener("drop", drop);
     }
@@ -39,12 +39,12 @@ function getDropZones(){
   if (currentPlayer.name == 'player2') {
     if (lastPlayer.pile.length == 0) {
       dropZones[2].removeEventListener("dragover", dragover);
-      dropZones[2].removeEventListener("dragover", dragover);
+      dropZones[2].removeEventListener("drop", drop);
       dropZones[0].removeEventListener("dragover", dragover);
-      dropZones[0].removeEventListener("dragover", dragover);
+      dropZones[0].removeEventListener("drop", drop);
     }else {
       dropZones[0].removeEventListener("dragover", dragover);
-      dropZones[0].removeEventListener("dragover", dragover);
+      dropZones[0].removeEventListener("drop", drop);
       dropZones[2].addEventListener("dragover", dragover);
       dropZones[2].addEventListener("drop", drop);
     }
@@ -66,11 +66,35 @@ function drop(e) {
 
 //DRAGGABLES - executado dentro na função render
 function getCardsImg() {
-  const cardsImg = document.querySelectorAll("img");
-  cardsImg.forEach((cardImg) => {
-    cardImg.addEventListener("dragstart", dragstart);
-    cardImg.addEventListener("dragend", dragend);
-  });
+    if (currentPlayer.name == 'player1') {
+        const cardsImgLast = document.querySelectorAll("#hand2 > img");
+        cardsImgLast.forEach(cardImg => {
+            cardImg.removeEventListener("dragstart", dragstart);
+            cardImg.removeEventListener("dragend", dragend);
+            cardImg.classList.remove("cardImgCurrent");
+        });
+        const cardsImgCurrent = document.querySelectorAll("#hand1 > img");
+        cardsImgCurrent.forEach(cardImg => {
+          cardImg.addEventListener("dragstart", dragstart);
+          cardImg.addEventListener("dragend", dragend);
+          cardImg.classList.add("cardImgCurrent");
+        });
+    }
+    if (currentPlayer.name == 'player2') {
+        const cardsImgLast = document.querySelectorAll("#hand1 > img");
+        cardsImgLast.forEach((cardImg) => {
+            cardImg.removeEventListener("dragstart", dragstart);
+            cardImg.removeEventListener("dragend", dragend);
+            cardImg.classList.remove("cardImgCurrent");
+        });
+        const cardsImgCurrent = document.querySelectorAll("#hand2 > img");
+        cardsImgCurrent.forEach(cardImg => {
+            cardImg.addEventListener("dragstart", dragstart);
+            cardImg.addEventListener("dragend", dragend);
+            cardImg.classList.add("cardImgCurrent");
+        });
+
+    }
 }
 function dragstart() {
   this.classList.add("is-dragging");
@@ -179,6 +203,14 @@ function verifica(value, handCard, dropZone) {
         })
         lastPlayer.pile = []
       }
+      else {
+        currentPlayer.hand.map((c) => {
+          if (c.image.includes(handCard)){
+            table.push(c)
+            currentPlayer.hand.splice(currentPlayer.hand.indexOf(c), 1);
+          }
+        })
+      }
     }
     if(dropZone == pile2){
       if(lastPlayer.pile[lastPlayer.pile.length - 1].code.includes(value)){
@@ -190,11 +222,20 @@ function verifica(value, handCard, dropZone) {
           }
         })
         lastPlayer.pile = []
+    }
+    else {
+        currentPlayer.hand.map((c) => {
+          if (c.image.includes(handCard)){
+            table.push(c)
+            currentPlayer.hand.splice(currentPlayer.hand.indexOf(c), 1);
+          }
+        })
       }
     }
   renderPile(dropZone);
   renderTable();
   changeTurn();
+  getCardsImg();
 }
 
 //RENDERS
@@ -230,7 +271,7 @@ function renderTable() {
 }
 
 function renderPile(dropZone) {
-  let pileDomCurrent;//player2.pile
+  let pileDomCurrent;
   let mesa = document.querySelector("#table");
   let pileDom1 = document.querySelector("#pile1");
   let pileDom2 = document.querySelector("#pile2");
@@ -263,39 +304,37 @@ function renderPile(dropZone) {
   }
 }
 
-getDeckId();
-getDropZones();
-
-
-
 function changeTurn(){
     if (currentTurn == 0) {
         currentPlayer = player2
         lastPlayer = player1
         currentTurn = 1
-      } else {
+    } else {
         currentPlayer = player1
         lastPlayer = player2
         currentTurn = 0
     }
     getDropZones();
     if (currentPlayer.hand.length == 0 && lastPlayer.hand.length == 0) {
-      setHand()
+        setHand()
     }
     if (table.length == 0) {
       setTable()
     }
     console.log(deck.cards.length);
     if (deck.cards.length == 0) {
-      if (player1.pile.length > player2.pile.length) {
-        alert('Player 1 VENCEU!')
-      }
-      if (player1.pile.length < player2.pile.length) {
-        alert('Player 2 VENCEU!')
-      }
-      else {
-        alert('Os burros empataram!')
-
-      }
+        if (player1.pile.length > player2.pile.length) {
+            alert(`Player 1 VENCEU com ${player1.pile.length} cartas no MONTE`)
+        }
+        else if (player1.pile.length < player2.pile.length) {
+            alert(`Player 2 VENCEU com ${player1.pile.length} cartas no MONTE`)
+        }
+        else {
+            alert('Os burros empataram!')
+        }
     }
 }
+
+getDeckId();
+getDropZones();
+getCardsImg();
