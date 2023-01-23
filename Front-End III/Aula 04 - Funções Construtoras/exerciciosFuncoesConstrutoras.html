@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+
+
+
+
+
+    <script>
+
+        function LinhaAerea(identificador, origem, destino, partida, chegada, valor, quantidadeAssentos) {
+
+            this.identificador = identificador
+            this.origem = origem
+            this.destino = destino
+            this.partida = partida
+            this.chegada = chegada
+
+            if (valor < 0) {
+                this.valor = 1.00
+                console.log(`Valor informado foi menor do que zero. O valor da passagem está em R$: ${this.valor}`);
+            } else {
+                this.valor = valor
+            }
+
+            this.valor = valor
+            this.assentos = new Array(quantidadeAssentos)
+            this.assentos.fill(true)
+
+            // ====================== métodos ==========================
+
+            this.getValor = function () {
+                return this.valor
+            }
+
+            this.getDestino = function () {
+                return this.destino
+            }
+
+            this.getOrigem = function () {
+                return this.origem
+            }
+
+            this.getPartida = function () {
+                return this.partida
+            }
+
+            this.getChegada = function () {
+                return this.chegada
+            }
+
+            this.getAssentos = function () {
+                console.log(this.assentos);
+            }
+
+            this.getAssentosLivres = function () {
+                for (assento in this.assentos){
+                    if(this.assentos[assento])
+                    console.log(`Assento livre: ${assento}`);
+                }
+            }
+
+            this.setValor = function (valor) {
+                this.valor = valor
+            }
+
+            this.atrasar = function (minutos) {
+                this.partida += minutos
+                this.chegada += minutos
+            }
+
+            this.comprar = function (id) {
+
+                if (id == undefined) {
+                    for (assento in this.assentos) {
+                        if (this.assentos[assento]) {
+                            this.assentos[assento] = false
+                            console.log(`Assento comprado na posição ${assento}`);
+                            break
+                        }
+                    }
+                } else {
+                    if (this.assentos[id]) {
+                        this.assentos[id] = false
+                        console.log(`Assento comprado na posição ${id}`);
+                    } else {
+                        console.log("Assento indisponivel");
+                    }
+                }
+
+
+
+            }
+
+        }
+
+
+
+            let partida = new Date;
+            partida.getMinutes;
+
+            let chegada = new Date;
+            chegada.getMinutes;
+
+            let voo1 = new LinhaAerea(000, "Las Vegas", "Pelotas", partida, chegada, 1500, 250)
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>
