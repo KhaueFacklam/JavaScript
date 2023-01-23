@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios Funcoes Construtoras - Musica</title>
+</head>
+
+<body>
+    <script>
+        function Musica(nome, artista, álbum, duração, gênero, posição, playing) {
+            this.nome = nome,
+                this.artista = artista,
+                this.álbum = álbum,
+                this.duração = duração,
+                this.gênero = gênero,
+                this.posição = posição,
+                this.playing = playing
+            this.play = function () {
+                this.playing = true
+            }
+            this.pause = function () {
+                this.playing = false
+            }
+        }
+
+        function Playlist(nome, /*musicas, /*musicaAtual*/) {
+            this.nome = nome
+            let musicas = Array()
+            this.musicaAtual = null
+            // this.musicaAtual = musicaAtual
+            this.mostrarPlaylist = function(){
+                console.log(musicas)
+            }
+            this.adicionaMusica = function(musica){
+                musicas.push(musica)
+                console.log(`Música ${musica.nome} adicionada com sucesso`)
+            }
+            this.removeMusica = function(musica){
+                musicas.splice(musicas.indexOf(musica), 1)
+                console.log(`Música ${musica.nome} removida com sucesso`)
+                
+            }
+            this.getMusicaCorrente = function(musica){
+                console.log(this.musicas.indexOf(musica))
+            }
+            this.setMusicaCorrente = function(indice){
+                musicaAtual = musicas.indexOf(indice)
+            }
+        }
+
+        const musica1 = new Musica("One", "U2", "Achtung Baby", 3.15, "Rock", 1, false)
+        const musica2 = new Musica("Two", "U3", "Achtung Child", 4.50, "Rock", 2, false)
+
+        musica1.play()
+        console.log(`Música ${musica1.nome} tocando: ${musica1.playing}`)
+        musica1.pause()
+        console.log(`Música ${musica1.nome} tocando: ${musica1.playing}`)
+        
+        const playlist1 = new Playlist("PL")
+        playlist1.adicionaMusica(musica1)
+        playlist1.adicionaMusica(musica2)
+        playlist1.mostrarPlaylist()
+        
+        playlist1.removeMusica(musica2)
+        playlist1.mostrarPlaylist()
+
+    </script>
+</body>
+
+</html>

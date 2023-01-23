@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protótipos</title>
+</head>
+
+<body>
+    <script>
+
+        let circulo = {cor: null, x: null, y: null, raio: null }
+        let quadrado = Object.create(circulo)
+
+        quadrado.cor = "#d35e5a"
+        quadrado.container = null
+        quadrado.x = 0
+        quadrado.y = 0
+        quadrado.lado = 1
+        quadrado.crescer = function (valor) {
+            this.lado += valor
+        }
+        quadrado.diminuir = function (valor) {
+            if (this.lado == 1) {
+                return
+            } else {
+                this.lado -= valor
+            }
+        }
+        quadrado.getPosicao = function () {
+            return `Psição: x: ${this.x} e y: ${this.y}`
+        }
+        quadrado.setPosicao = function (x, y) {
+            this.x = x
+            this.y = y
+        }
+        quadrado.moveDireita = function (valor) {
+            this.x += valor
+        }
+        quadrado.moveEsquerda = function (valor) {
+            this.x -= valor
+        }
+        quadrado.moveCima = function (valor) {
+            this.y += valor
+        }
+        quadrado.moveBaixo = function (valor) {
+            this.y -= valor
+        }
+        quadrado.getArea = function () {
+            return Math.pow(this.lado, 2)
+        }
+        quadrado.getPerimetro = function () {
+            return this.lado * 4
+        }
+        quadrado.renderizar = function () {
+            this.container = document.createElement("div")
+            document.body.appendChild(this.container)
+            this.container.style.backgroundColor = this.cor
+            this.container.style.width = `${this.lado}px`
+            this.container.style.height = `${this.lado}px`
+        }
+        quadrado.upadate = function () {
+            // this.container.parentNode.removeChild(this.container)
+            this.container.remove()
+            quadrado.renderizar()
+        }
+
+        let quadrado2 = Object.create(quadrado)
+
+    </script>
+</body>
+
+</html>

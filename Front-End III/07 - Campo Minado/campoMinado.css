@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(46, 46, 46);
+    color: aliceblue;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+table {
+    border-spacing: 0;
+}
+
+td {
+    height: 50px;
+    width: 50px;
+    background-color: lightgray;
+    border: 1px solid black;
+}
+
+.bomba {
+    /* background-color: red; */
+}
+
+.bum {
+    background-color: red;
+}
+
+.desativada {
+    background-color: green;
+}
+
+.bumPopUp{
+    position: absolute;
+    height: 200px;
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    background-color: red;
+    color: black;
+    font-size: 3rem;
+}

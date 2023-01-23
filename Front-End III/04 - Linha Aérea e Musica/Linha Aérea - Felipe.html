@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios Funcoes Construtoras - Travel App</title>
+</head>
+
+<body>
+    <script>
+
+        function LinhaAerea(cod, origem, destino, horarioPartida, horarioChegada, valor) {
+            this.cod = cod
+            this.origem = origem
+            this.destino = destino
+            this.horarioPartida = horarioPartida
+            this.horarioChegada = horarioChegada
+            this.valor = valor
+            this.assentos = new Array(100);
+
+            this.getOrigem = function () {
+                return this.origem
+            }
+            this.getDestino = function () {
+                return this.destino
+            }
+            this.getHorarioPartida = function () {
+                return this.horarioPartida
+            }
+            this.getHorarioChegada = function () {
+                return this.horarioChegada
+            }
+            this.getValor = function () {
+                return this.valor
+            }
+            this.getAssentos = function () {
+                this.assentos.forEach((a, i) => {
+                    if (a == 'Ocupado') {
+                        console.log(`Assento ${i}: Ocupado`)
+                    } else {
+                        console.log(`Assento ${i}: Disponível`)
+                    }
+                });
+            }
+            this.getAssentosLivres = function () {
+                this.assentos.forEach((a, i) => {
+                    if (a == 'Ocupado') {
+                        console.log(`Assento ${i}: Disponível`)
+                    }
+                })
+            }
+            this.setValor = function (valor) {
+                if (valor <= 0 || valor == undefined) {
+                    this.valor = 1.00
+                    console.log(`Valor inválido. Novo valor: R$ ${this.valor}`)
+                } else {
+                    this.valor = valor
+                    console.log(`R$ ${this.valor}`)
+                }
+            }
+            this.atrasar = function (minutos) {
+                console.log(`Horário regular de partida: ${this.horarioPartida}`)
+                console.log(`Horário regular de chegada: ${this.horarioChegada}`)
+                horarioPartida.setMinutes(horarioPartida.getMinutes() + minutos)
+                horarioChegada.setMinutes(horarioChegada.getMinutes() + minutos)
+                console.log(`Horário de partida com atraso: ${this.horarioPartida}`)
+                console.log(`Horário de chegada com atraso: ${this.horarioChegada}`)
+            }
+            this.comprar = function (id) {
+                if (id == undefined) {
+                    for (assentos in this.assentos) {
+                        if (this.assentos == 'Disponível') {
+                            console.log(`Compra do assento ${i} realizada com sucesso!`)
+                            break
+                        }
+                    }
+                }
+                else if (this.assentos[id] == 'Disponível') {
+                    this.assentos[id] = 'Ocupado'
+                    console.log(`Compra do assento ${id} realizada com sucesso!`)
+                } else if (this.assentos[id] == 'Ocupado') {
+                    console.log('Assento ocupado. Escolha outro.')
+                } else {
+                    console.log('Assento indisponível.')
+                }
+            }
+        }
+
+        const horarioPartida = new Date('December 11, 2022 08:00:00')
+        const horarioChegada = new Date('December 11, 2022 20:56:00')
+
+        const linha1 = new LinhaAerea(001, "Porto Alegre - BR", "Londres - UK", horarioPartida, horarioChegada, 6000);
+
+        for (i = 0; i <= 100; i++) {
+            linha1.assentos.push('Disponível')
+        }
+
+        linha1.assentos.splice(0, 1, 'Ocupado')
+        linha1.assentos.splice(1, 1, 'Ocupado')
+        linha1.assentos.splice(5, 1, 'Ocupado')
+        linha1.assentos.splice(10, 1, 'Ocupado')
+        linha1.getAssentos()
+        linha1.getValor()
+        linha1.setValor(8500)
+        linha1.atrasar(30)
+        linha1.comprar(3)
+        linha1.comprar(1)
+        linha1.comprar()
+        linha1.setValor(0)
+
+
+    </script>
+</body>
+
+</html>
