@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        let card = {
+            titulo: "AAA",
+            subtitulo: "BBB",
+            mensagem: "123",
+            cor: "#FFF999",
+            container: null,
+            renderizar: function () {
+                this.container = document.createElement("div")
+                document.body.appendChild(this.container);
+                this.container.style.backgroundColor = this.cor
+                this.container.style.width = "250px";
+                let el = document.createElement("h1");
+                el.innerHTML = this.titulo;
+                this.container.appendChild(el);
+                el = document.createElement("h2");
+                el.innerHTML = this.subtitulo;
+                this.container.appendChild(el);
+                el = document.createElement("p");
+                el.innerHTML = this.mensagem;
+                this.container.appendChild(el);
+            }
+        }
+
+        card.renderizar();
+
+        let ponto = {
+            x: 2,
+            y: 3,
+            distanciaOrigem: function () {
+                return Math.sqrt(this.x ** 2 + this.y ** 2)
+            }
+        }
+
+        alert(ponto.distanciaOrigem())
+
+        let pai = {
+            nome: "Khaue",
+            sobrenome: "Facklam"
+        }
+
+        let filho = Object.create(pai)
+        console.log(pai)
+        console.log(filho)
+        console.log(filho.nome)
+        console.log(filho.sobrenome)
+        pai.sobrenome = "Lessa"
+        console.log(pai)
+        console.log(filho)
+        console.log(filho.sobrenome)
+        filho.nome = "Glederson"
+        console.log(pai)
+        console.log(filho)
+        console.log(pai.nome)
+        console.log(sobrenome.sobrenome)
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

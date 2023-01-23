@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+
+
+
+    <script>
+
+        let livro = new Object();
+        
+        livro.titulo = "JavaScript: O Guia Definitivo"
+        livro.isbn = "856583719X"
+        livro.autor = "David Flanagan"
+        livro.editora = "Bookman"
+        livro.ano = "29 agosto 2012"
+        livro.valor = 150.27
+
+
+
+        for (i in livro) {
+            console.log(i);
+            console.log(livro[i]);
+        }
+
+        let pessoa = {
+            nome: "Cauã",
+            saudacao: function (turno) {
+                if (turno == 1) {
+                    return `Bom dia ${this.nome}`
+                }
+                else if (turno == 2) {
+                    return `Boa tarde`
+                }
+                else {
+                    return `Boa noite`
+                }
+            }
+        }
+
+        delete pessoa.nome;
+
+        console.log(pessoa.saudacao(1))
+
+    </script>
+
+</body>
+
+</html>
