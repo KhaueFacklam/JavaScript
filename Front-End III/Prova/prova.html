@@ -1,14 +1,174 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="prova.css">
-    <script src="prova.js" type="module" defer></script>
+    <!-- <script src="prova.js" type="module" defer></script> -->
     <title>Prova</title>
 </head>
+
 <body>
-    
+
+
+
+
+
+
+
+    <script>
+
+        function Carta(nome, habito, periodo, altura, comprimento, peso, viveu) {
+            this.nome = nome
+            this.habito = habito
+            this.periodo = periodo
+
+            this.altura = altura
+            this.comprimento = comprimento
+            this.peso = peso
+            this.viveu = viveu
+
+            this.render = function () {
+
+                var div = document.createElement("div")
+                var br = document.createElement("br")
+
+                div.addEventListener("click", (event) => {
+                    let clickedElement = event.target
+                    clickedElement.classList.add("negrito")
+                    div.classList.add("selecao")
+                })
+
+                var p1 = document.createElement("p")
+                div.appendChild(br)
+                p1.innerText = `Nome: ${this.nome}`
+                div.appendChild(p1)
+
+                var p2 = document.createElement("p")
+                p2.innerText = `Hábito: ${this.habito}`
+                div.appendChild(p2)
+
+                var p3 = document.createElement("p")
+                p3.innerText = `Periodo: ${this.periodo}`
+                div.appendChild(p3)
+
+                var p4 = document.createElement("p")
+                p4.innerText = `Altura: ${this.altura}`
+                div.appendChild(p4)
+
+
+                var p5 = document.createElement("p")
+                p5.innerText = `Comprimento: ${this.comprimento}`
+                div.appendChild(p5)
+
+                var p6 = document.createElement("p")
+                p6.innerText = `Peso: ${this.peso}`
+                div.appendChild(p6)
+
+                var p7 = document.createElement("p")
+                p7.innerText = `Viveu: ${this.viveu}`
+                div.appendChild(p7)
+
+                document.body.appendChild(div)
+
+            }
+
+        }
+
+
+        function Jogo(deck) {
+
+            this.deck = deck
+            var deckPC = []
+
+
+            for (let i = 0; i < 5; i++) {
+                var random = Math.floor(Math.random() * 10)
+                deckPC.push(this.deck[random])
+                this.deck.splice(random, 1)
+                //faltou verificar se o indíce já foi escolhido
+            }
+
+
+
+            function render() {
+
+
+
+            }
+
+            console.log(this.deck);
+            console.log(deckPC);
+
+
+
+
+
+
+
+
+            /*
+            Me atrapalhei no entendimento do jogo. Percebi que não iria conseguir estrutura-lo corramente a tempo, então comecei a trabalhar
+            nas partes separadas do código. A proxima coisa que eu iria fazer era passar a função render aqui para dentro e refazê-la,
+            gerando o deck através de um FOR, sem a necessidade de criar tantos elementos. Mas fiquei com medo de estragar o pouco de funcionava */
+
+
+
+
+
+
+
+
+
+
+
+        }
+
+
+
+
+
+
+        let c1 = new Carta("Errerasauro", "carnivoro", "Triassico", 1.5, 4, 5, 300, 231);
+        let c2 = new Carta("Patagogassauro", "herbivoro", "Jurassico", 2.5, 4, 5, 300, 415);
+        let c3 = new Carta("Ceratossauro", "onivoro", "Triassico", 1.9, 4, 5, 200, 361);
+        let c4 = new Carta("Velociraptor", "carnivoro", "Triassico", 1.2, 4, 5, 650, 231);
+        let c5 = new Carta("Triceratops", "onivoro", "Triassico", 3.5, 4, 5, 150, 231);
+        let c6 = new Carta("Baptossauro", "carnivoro", "Triassico", 4.4, 4, 5, 300, 514);
+        let c7 = new Carta("Alossauro", "herbivoro", "Triassico", 4.3, 4, 5, 800, 231);
+        let c8 = new Carta("Carnotauro", "herbivoro", "Triassico", 2.3, 4, 5, 300, 231);
+        let c9 = new Carta("Tiranosauro Rex", "carnivoro", "Triassico", 3.1, 4, 5, 231, 300);
+        let c10 = new Carta("Barionix", "onivoro", "Triassico", 2.3, 4, 5, 300, 450);
+
+        c1.render()
+        c2.render()
+        c3.render()
+        c4.render()
+        c5.render()
+        c6.render()
+        c7.render()
+        c8.render()
+        c9.render()
+        c10.render()
+
+
+        var deck = [c1, c2, c3, c4, c5, c6, c7, c8, c9, c10];
+        let jogo = new Jogo(deck)
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
 </body>
+
 </html>
